@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yosemite Trip 2026 🏔️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== THEME VARIABLES ===== */
+:root {
+  --forest:#1a3a2a; --pine:#2d5a3d; --sage:#6a9a72;
+  --mist:#b8d4be; --cream:#f5f0e8; --granite:#8a7968;
+  --gold:#d4a843; --danger:#c0392b; --danger-light:#fdf0ee;
+  --sky:#4a8fa8; --amber:#e8a020;
+  --bg:var(--cream); --card:#ffffff; --text:var(--forest);
+  --text2:#4a5a50; --text3:var(--granite); --border:rgba(0,0,0,0.06);
+  --input-bg:#ffffff; --input-border:#d0ddd4;
+  --section-bg:#f9fdf9; --hover-bg:#f0f7f2;
+}
+[data-theme="dark"] {
+  --bg:#0f1f17; --card:#162a1e; --text:#e8f0ea; --text2:#a8c4ae;
+  --text3:#7a9a82; --border:rgba(255,255,255,0.08);
+  --input-bg:#1e3528; --input-border:#2d5a3d;
+  --section-bg:#1a2e22; --hover-bg:#1e3528; --cream:#0f1f17;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; transition:background 0.3s, color 0.3s; }
+
+/* ===== HERO ===== */
+.hero { background:linear-gradient(160deg,#0e2518 0%,#1a3a2a 40%,#2d5a3d 70%,#4a8a5a 100%); color:white; padding:52px 40px 44px; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity:0.5; }
+.hero-inner { max-width:960px; margin:0 auto; position:relative; z-index:1; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:start; }
+.hero-left {}
+.hero-eyebrow { font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mist); margin-bottom:10px; }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(36px,6vw,64px); font-weight:900; line-height:1.05; margin-bottom:14px; text-shadow:0 2px 20px rgba(0,0,0,0.3); }
+.hero h1 span { color:var(--gold); }
+.hero-sub { font-size:15px; color:var(--mist); margin-bottom:24px; font-weight:300; }
+.trip-badges { display:flex; flex-wrap:wrap; gap:8px; }
+.badge { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:100px; padding:5px 14px; font-size:12px; font-weight:500; backdrop-filter:blur(10px); }
+
+/* COUNTDOWN */
+.countdown-box { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); border-radius:20px; padding:20px 24px; backdrop-filter:blur(12px); min-width:220px; text-align:center; }
+.countdown-label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--mist); margin-bottom:12px; }
+.countdown-units { display:flex; gap:10px; justify-content:center; }
+.cu { text-align:center; }
+.cu-num { font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:white; line-height:1; display:block; }
+.cu-label { font-size:9px; text-transform:uppercase; letter-spacing:1px; color:var(--mist); margin-top:3px; display:block; }
+.cu-sep { font-size:22px; color:rgba(255,255,255,0.3); align-self:center; padding-bottom:10px; }
+.countdown-gone { font-size:16px; font-weight:600; color:var(--gold); }
+
+/* WEATHER STRIP */
+.weather-strip { background:var(--card); border-bottom:1px solid var(--border); padding:12px 24px; }
+.weather-inner { max-width:960px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.weather-title { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); }
+.weather-days { display:flex; gap:8px; flex-wrap:wrap; }
+.weather-day { background:var(--section-bg); border:1px solid var(--border); border-radius:12px; padding:8px 14px; text-align:center; min-width:72px; }
+.wd-date { font-size:10px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:.5px; }
+.wd-icon { font-size:20px; margin:3px 0; display:block; }
+.wd-temp { font-size:12px; font-weight:600; color:var(--text); }
+.wd-desc { font-size:10px; color:var(--text3); margin-top:1px; }
+.weather-note { font-size:11px; color:var(--text3); margin-left:auto; font-style:italic; }
+
+/* TABS BAR */
+.tabs-wrap { position:sticky; top:0; z-index:200; }
+.tabs-bar { background:var(--forest); display:flex; overflow-x:auto; scrollbar-width:none; box-shadow:0 4px 20px rgba(0,0,0,0.25); }
+.tabs-bar::-webkit-scrollbar { display:none; }
+.tab-btn { background:none; border:none; color:var(--mist); padding:14px 18px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap; transition:all 0.2s; border-bottom:3px solid transparent; }
+.tab-btn:hover { color:white; background:rgba(255,255,255,0.05); }
+.tab-btn.active { color:var(--gold); border-bottom-color:var(--gold); background:rgba(212,168,67,0.08); }
+.darkmode-btn { margin-left:auto; background:none; border:none; color:var(--mist); padding:14px 18px; cursor:pointer; font-size:16px; transition:all 0.2s; }
+.darkmode-btn:hover { color:white; }
+
+.main { max-width:960px; margin:0 auto; padding:36px 24px; }
+.tab-panel { display:none; animation:fadeIn 0.3s ease; }
+.tab-panel.active { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+.section-title { font-family:'Playfair Display',serif; font-size:30px; color:var(--text); margin-bottom:6px; }
+.section-sub { color:var(--text3); font-size:14px; margin-bottom:28px; }
+
+/* CARDS */
+.card { background:var(--card); border-radius:20px; padding:28px; margin-bottom:20px; border:1px solid var(--border); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
+.card h3 { font-family:'Playfair Display',serif; font-size:20px; margin-bottom:12px; color:var(--text); }
+.card p { font-size:14px; line-height:1.7; color:var(--text2); margin-bottom:10px; }
+.card p:last-child { margin-bottom:0; }
+
+/* INFO GRID */
+.info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:36px; }
+.info-card { background:var(--card); border-radius:16px; padding:18px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.info-card-icon { font-size:22px; margin-bottom:7px; }
+.info-card-label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); margin-bottom:4px; font-weight:600; }
+.info-card-value { font-size:14px; font-weight:600; color:var(--text); }
+.info-card-sub { font-size:11px; color:var(--text3); margin-top:2px; }
+
+/* HIGHLIGHT LIST */
+.hl { list-style:none; display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:7px; margin-top:10px; }
+.hl li { background:var(--section-bg); border-radius:8px; padding:7px 11px; font-size:12px; display:flex; align-items:center; gap:7px; color:var(--text); font-weight:500; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
+@media(max-width:640px){.two-col{grid-template-columns:1fr;}}
+
+/* HIKES */
+.hike-filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.filter-btn { background:var(--card); border:2px solid var(--border); border-radius:100px; padding:6px 16px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; cursor:pointer; transition:all 0.2s; color:var(--text); }
+.filter-btn:hover,.filter-btn.active { background:var(--pine); color:white; border-color:var(--pine); }
+.hikes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:18px; margin-bottom:36px; }
+.hike-card { background:var(--card); border-radius:20px; overflow:hidden; border:1px solid var(--border); box-shadow:0 2px 10px rgba(0,0,0,0.04); cursor:pointer; transition:all 0.25s; }
+.hike-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(0,0,0,0.12); }
+.hike-card.selected { border-color:var(--pine); box-shadow:0 0 0 3px rgba(45,90,61,0.2),0 8px 30px rgba(0,0,0,0.1); }
+.hike-header { padding:18px 18px 0; display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+.hike-name { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--text); line-height:1.3; }
+.diff { padding:3px 9px; border-radius:100px; font-size:10px; font-weight:600; white-space:nowrap; flex-shrink:0; }
+.easy{background:#d4edda;color:#155724} .moderate{background:#fff3cd;color:#856404} .hard{background:#f8d7da;color:#721c24} .strenuous{background:#f5c6cb;color:#491217}
+.hike-body { padding:10px 18px 18px; }
+.hike-stats { display:flex; gap:12px; margin:8px 0 10px; flex-wrap:wrap; }
+.hike-stat { font-size:11px; color:var(--text3); font-weight:500; }
+.hike-desc { font-size:12px; color:var(--text2); line-height:1.6; margin-bottom:10px; }
+.hike-tip { background:var(--section-bg); border-left:3px solid var(--sage); border-radius:4px; padding:7px 11px; font-size:11px; color:var(--pine); font-style:italic; }
+
+/* MAP */
+.map-section { background:var(--card); border-radius:20px; padding:24px; margin-bottom:28px; border:1px solid var(--border); }
+.map-section h3 { font-family:'Playfair Display',serif; font-size:18px; margin-bottom:14px; color:var(--text); }
+.map-embed { width:100%; height:320px; border-radius:12px; background:var(--section-bg); display:flex; align-items:center; justify-content:center; }
+.map-link-btn { display:inline-flex; align-items:center; gap:7px; background:var(--pine); color:white; border:none; border-radius:100px; padding:11px 22px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600; cursor:pointer; text-decoration:none; margin-top:10px; transition:background 0.2s; }
+.map-link-btn:hover { background:var(--forest); }
+.map-info-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin-top:14px; }
+.mii { background:var(--section-bg); border-radius:10px; padding:10px; font-size:11px; color:var(--text3); }
+.mii strong { display:block; color:var(--text); font-size:13px; margin-bottom:2px; }
+
+/* ITINERARY */
+.day-tabs { display:flex; gap:7px; margin-bottom:20px; flex-wrap:wrap; }
+.day-tab { background:var(--card); border:2px solid var(--border); border-radius:12px; padding:9px 16px; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; color:var(--text); }
+.day-tab:hover { border-color:var(--pine); }
+.day-tab.active { background:var(--pine); border-color:var(--pine); color:white; }
+.day-tab-label { font-size:9px; text-transform:uppercase; letter-spacing:1px; font-weight:600; opacity:0.7; }
+.day-tab-date { font-size:13px; font-weight:600; margin-top:2px; }
+.day-panel { display:none; }
+.day-panel.active { display:block; animation:fadeIn 0.3s ease; }
+.day-card { background:var(--card); border-radius:20px; padding:26px; border:1px solid var(--border); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
+.day-card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; flex-wrap:wrap; gap:10px; }
+.day-title-area h3 { font-family:'Playfair Display',serif; font-size:20px; color:var(--text); }
+.day-title-area p { font-size:12px; color:var(--text3); margin-top:2px; }
+.day-header-right { display:flex; gap:7px; align-items:center; flex-wrap:wrap; }
+.timeline { position:relative; padding-left:26px; }
+.timeline::before { content:''; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:linear-gradient(to bottom,var(--mist),var(--sage)); border-radius:2px; }
+.timeline-item { position:relative; margin-bottom:18px; }
+.timeline-item::before { content:''; position:absolute; left:-22px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--sage); border:2px solid var(--card); box-shadow:0 0 0 2px var(--sage); }
+.ttime { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text3); margin-bottom:2px; }
+.tactivity { font-size:14px; font-weight:600; color:var(--text); }
+.tnote { font-size:12px; color:var(--text2); margin-top:2px; line-height:1.5; }
+.notes-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text3); margin:18px 0 7px; }
+.day-notes-view { line-height:1.7; color:var(--text2); font-size:13px; white-space:pre-wrap; }
+
+/* EDIT MODE */
+.edit-banner { background:var(--section-bg); border:2px dashed var(--sage); border-radius:12px; padding:10px 14px; margin-bottom:16px; font-size:12px; color:var(--pine); font-weight:500; }
+.edit-label { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text3); margin-bottom:3px; }
+.edit-input { width:100%; padding:7px 11px; border:1.5px solid var(--input-border); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); background:var(--input-bg); outline:none; transition:border-color 0.2s; }
+.edit-input:focus { border-color:var(--pine); }
+.edit-textarea { width:100%; padding:7px 11px; border:1.5px solid var(--input-border); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:12px; color:var(--text); background:var(--input-bg); outline:none; resize:vertical; min-height:56px; line-height:1.5; transition:border-color 0.2s; }
+.edit-textarea:focus { border-color:var(--pine); }
+.day-title-edit { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+@media(max-width:500px){.day-title-edit{grid-template-columns:1fr;}}
+.sched-list { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+.sched-item { background:var(--section-bg); border:1.5px solid var(--border); border-radius:12px; padding:12px 14px; position:relative; }
+.sched-row { display:grid; grid-template-columns:130px 1fr; gap:9px; margin-bottom:7px; }
+@media(max-width:500px){.sched-row{grid-template-columns:1fr;}}
+.item-del { position:absolute; top:9px; right:11px; background:none; border:none; color:var(--text3); font-size:15px; cursor:pointer; padding:2px 6px; border-radius:6px; transition:all 0.2s; }
+.item-del:hover { color:var(--danger); background:var(--danger-light); }
+.add-item-btn { display:flex; align-items:center; justify-content:center; gap:7px; width:100%; padding:11px; border:2px dashed var(--input-border); border-radius:12px; background:none; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; color:var(--pine); cursor:pointer; transition:all 0.2s; margin-bottom:14px; }
+.add-item-btn:hover { border-color:var(--pine); background:var(--section-bg); }
+.notes-edit { width:100%; min-height:70px; padding:11px; border:1.5px solid var(--input-border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:13px; line-height:1.7; color:var(--text); background:var(--input-bg); outline:none; resize:vertical; transition:border-color 0.2s; }
+.notes-edit:focus { border-color:var(--pine); }
+
+/* BUTTONS */
+.btn { display:inline-flex; align-items:center; gap:5px; border-radius:100px; padding:7px 15px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500; cursor:pointer; transition:all 0.2s; border:none; }
+.btn-outline { background:var(--section-bg); border:1px solid var(--border); color:var(--text); }
+.btn-outline:hover { background:var(--pine); color:white; }
+.btn-primary { background:var(--pine); color:white; }
+.btn-primary:hover { background:var(--forest); }
+
+/* ===== PERSON SELECT ===== */
+.person-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; margin-bottom:32px; }
+.person-card { background:var(--card); border:2px solid var(--border); border-radius:20px; padding:28px 20px; text-align:center; cursor:pointer; transition:all 0.25s; }
+.person-card:hover { transform:translateY(-4px); border-color:var(--pine); box-shadow:0 12px 32px rgba(0,0,0,0.1); }
+.person-avatar { font-size:44px; margin-bottom:10px; }
+.person-name { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--text); margin-bottom:4px; }
+.person-sub { font-size:12px; color:var(--text3); }
+.person-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; flex-wrap:wrap; gap:12px; }
+
+/* ===== PACKING ===== */
+.pack-layout { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media(max-width:700px){.pack-layout{grid-template-columns:1fr;}}
+.pack-section { background:var(--card); border-radius:20px; padding:22px; border:1px solid var(--border); box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.pack-hdr { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+.pack-title { font-family:'Playfair Display',serif; font-size:17px; color:var(--text); }
+.pack-meta { display:flex; align-items:center; gap:7px; }
+.pack-prog { font-size:11px; color:var(--text3); font-weight:500; }
+.pack-prog span { color:var(--pine); font-weight:700; }
+.pack-clear { background:none; border:1px solid rgba(192,57,43,0.25); color:var(--danger); border-radius:100px; padding:3px 10px; font-family:'DM Sans',sans-serif; font-size:11px; cursor:pointer; transition:all 0.2s; }
+.pack-clear:hover { background:var(--danger); color:white; }
+.pack-list { list-style:none; display:flex; flex-direction:column; gap:4px; margin-bottom:12px; }
+.pack-item { display:flex; align-items:center; gap:8px; padding:7px 9px; border-radius:9px; background:var(--section-bg); border:1px solid transparent; transition:all 0.15s; }
+.pack-item:hover { background:var(--hover-bg); }
+.pack-item.done { background:var(--hover-bg); }
+.pack-item.done .pil { text-decoration:line-through; color:var(--text3); }
+.pack-cb { width:16px; height:16px; border-radius:4px; border:2px solid var(--input-border); cursor:pointer; appearance:none; -webkit-appearance:none; flex-shrink:0; transition:all 0.15s; background:var(--input-bg); }
+.pack-cb:checked { background:var(--pine); border-color:var(--pine); background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:center; }
+.pil { flex:1; font-size:12px; color:var(--text); cursor:pointer; }
+.pil-edit { flex:1; font-family:'DM Sans',sans-serif; font-size:12px; color:var(--text); border:none; background:transparent; outline:none; border-bottom:1.5px solid var(--pine); }
+.pack-actions { display:flex; gap:2px; opacity:0; transition:opacity 0.15s; }
+.pack-item:hover .pack-actions { opacity:1; }
+.pibtn { background:none; border:none; cursor:pointer; padding:2px 5px; border-radius:5px; font-size:12px; color:var(--text3); transition:all 0.15s; }
+.pibtn:hover { background:var(--hover-bg); }
+.pibtn.del:hover { background:var(--danger-light); color:var(--danger); }
+.pack-add { display:flex; gap:7px; }
+.pack-ai { flex:1; padding:8px 12px; border:1.5px solid var(--input-border); border-radius:9px; font-family:'DM Sans',sans-serif; font-size:12px; color:var(--text); background:var(--input-bg); outline:none; transition:border-color 0.2s; }
+.pack-ai:focus { border-color:var(--pine); }
+.pack-ab { background:var(--pine); color:white; border:none; border-radius:9px; padding:8px 14px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:background 0.2s; white-space:nowrap; }
+.pack-ab:hover { background:var(--forest); }
+
+/* ===== BUDGET ===== */
+.budget-group-summary { background:var(--card); border-radius:20px; padding:24px; border:1px solid var(--border); margin-top:8px; }
+.budget-group-summary h3 { font-family:'Playfair Display',serif; font-size:18px; color:var(--text); margin-bottom:16px; }
+.bgs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; margin-bottom:16px; }
+.bgs-card { background:var(--section-bg); border-radius:12px; padding:14px; text-align:center; }
+.bgs-name { font-size:11px; color:var(--text3); font-weight:600; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+.bgs-amt { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--pine); }
+.bgs-total-row { display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--border); }
+.bgs-total-label { font-size:13px; color:var(--text3); }
+.bgs-total-amt { font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:var(--forest); }
+.budget-person-total-card { background:var(--card); border-radius:16px; padding:20px 24px; border:1px solid var(--border); margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.bpt-label { font-size:13px; color:var(--text3); font-weight:500; }
+.bpt-total { font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:var(--pine); }
+.budget-bar-wrap { margin-top:12px; width:100%; }
+.budget-bar-label { font-size:11px; color:var(--text3); margin-bottom:4px; }
+.budget-bar { height:8px; background:var(--section-bg); border-radius:100px; overflow:hidden; margin-bottom:6px; }
+.budget-bar-fill { height:100%; border-radius:100px; transition:width 0.5s ease; }
+/* Stacked budget categories */
+.budget-stack { display:flex; flex-direction:column; gap:16px; }
+.budget-cat { background:var(--card); border-radius:16px; padding:20px; border:1px solid var(--border); }
+.bcat-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.bcat-title { font-size:15px; font-weight:600; color:var(--text); display:flex; align-items:center; gap:8px; }
+.bcat-total { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--pine); }
+.bcat-entries { list-style:none; display:flex; flex-direction:column; gap:5px; margin-bottom:12px; }
+.be { display:flex; align-items:center; gap:8px; padding:7px 10px; background:var(--section-bg); border-radius:8px; }
+.be-name { flex:1; font-size:13px; color:var(--text2); }
+.be-amount { font-size:13px; font-weight:600; color:var(--text); white-space:nowrap; }
+.be-del { background:none; border:none; cursor:pointer; color:var(--text3); font-size:13px; padding:2px 6px; border-radius:4px; transition:all 0.15s; flex-shrink:0; }
+.be-del:hover { color:var(--danger); background:var(--danger-light); }
+.bcat-add { display:flex; flex-direction:column; gap:8px; }
+.bcat-add-row { display:flex; gap:8px; }
+.bcat-input { flex:1; padding:8px 12px; border:1.5px solid var(--input-border); border-radius:9px; font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); background:var(--input-bg); outline:none; transition:border-color 0.2s; }
+.bcat-input:focus { border-color:var(--pine); }
+.bcat-addbtn { background:var(--pine); color:white; border:none; border-radius:9px; padding:8px 16px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; transition:background 0.2s; }
+.bcat-addbtn:hover { background:var(--forest); }
+
+/* ===== POLL ===== */
+.poll-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:12px; }
+.poll-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:20px; }
+.poll-card { background:var(--card); border-radius:20px; padding:22px; border:1px solid var(--border); }
+.poll-card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px; gap:8px; }
+.poll-card h4 { font-family:'Playfair Display',serif; font-size:17px; color:var(--text); flex:1; }
+.poll-card-actions { display:flex; gap:4px; flex-shrink:0; }
+.poll-icon-btn { background:none; border:1px solid var(--border); border-radius:8px; width:28px; height:28px; cursor:pointer; font-size:13px; color:var(--text3); display:flex; align-items:center; justify-content:center; transition:all 0.15s; }
+.poll-icon-btn:hover { background:var(--section-bg); color:var(--text); }
+.poll-icon-btn.del:hover { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+.poll-sub { font-size:12px; color:var(--text3); margin-bottom:16px; }
+.poll-options { display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
+.poll-opt { display:flex; align-items:center; gap:10px; padding:9px 12px; background:var(--section-bg); border-radius:10px; border:1.5px solid transparent; cursor:pointer; transition:all 0.2s; position:relative; overflow:hidden; }
+.poll-opt:hover { border-color:var(--mist); }
+.poll-opt.voted { border-color:var(--pine); }
+.poll-bar-bg { position:absolute; left:0; top:0; height:100%; background:rgba(45,90,61,0.08); border-radius:10px; transition:width 0.5s ease; z-index:0; }
+.poll-opt-text { flex:1; font-size:13px; font-weight:500; color:var(--text); position:relative; z-index:1; }
+.poll-count { font-size:12px; font-weight:700; color:var(--pine); position:relative; z-index:1; }
+.poll-pct { font-size:10px; color:var(--text3); position:relative; z-index:1; margin-left:2px; }
+.poll-opt-del { background:none; border:none; cursor:pointer; color:var(--text3); font-size:12px; padding:2px 4px; opacity:0; transition:opacity 0.15s; position:relative; z-index:1; flex-shrink:0; }
+.poll-opt:hover .poll-opt-del { opacity:1; }
+.poll-opt-del:hover { color:var(--danger); }
+.poll-footer { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+.poll-reset { background:none; border:1px solid var(--border); color:var(--text3); border-radius:100px; padding:4px 12px; font-family:'DM Sans',sans-serif; font-size:11px; cursor:pointer; transition:all 0.2s; }
+.poll-reset:hover { background:var(--section-bg); }
+/* Poll edit modal */
+.poll-modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:5000; align-items:center; justify-content:center; padding:20px; }
+.poll-modal-bg.open { display:flex; }
+.poll-modal { background:var(--card); border-radius:20px; padding:28px; width:100%; max-width:480px; max-height:90vh; overflow-y:auto; border:1px solid var(--border); box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+.poll-modal h3 { font-family:'Playfair Display',serif; font-size:20px; color:var(--text); margin-bottom:18px; }
+.pm-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text3); margin-bottom:5px; }
+.pm-input { width:100%; padding:9px 13px; border:1.5px solid var(--input-border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); background:var(--input-bg); outline:none; margin-bottom:12px; transition:border-color 0.2s; }
+.pm-input:focus { border-color:var(--pine); }
+.pm-opts-list { display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
+.pm-opt-row { display:flex; gap:6px; align-items:center; }
+.pm-opt-input { flex:1; padding:8px 12px; border:1.5px solid var(--input-border); border-radius:9px; font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); background:var(--input-bg); outline:none; transition:border-color 0.2s; }
+.pm-opt-input:focus { border-color:var(--pine); }
+.pm-opt-del { background:none; border:1px solid rgba(192,57,43,0.25); color:var(--danger); border-radius:8px; width:30px; height:30px; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.15s; }
+.pm-opt-del:hover { background:var(--danger); color:white; }
+.pm-add-opt { background:none; border:2px dashed var(--input-border); border-radius:9px; padding:7px 14px; font-family:'DM Sans',sans-serif; font-size:12px; color:var(--pine); cursor:pointer; width:100%; margin-bottom:16px; transition:all 0.2s; }
+.pm-add-opt:hover { border-color:var(--pine); background:var(--section-bg); }
+.pm-btns { display:flex; gap:8px; justify-content:flex-end; }
+/* Add Poll card */
+.poll-add-card { background:var(--card); border-radius:20px; padding:22px; border:2px dashed var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; cursor:pointer; transition:all 0.2s; min-height:180px; }
+.poll-add-card:hover { border-color:var(--pine); background:var(--section-bg); }
+.poll-add-icon { font-size:32px; }
+.poll-add-label { font-size:14px; font-weight:600; color:var(--text3); }
+
+/* ===== GALLERY ===== */
+.gallery-poster-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+.gallery-poster-label { font-size:13px; color:var(--text3); font-weight:600; }
+.gallery-poster-btn { background:var(--section-bg); border:2px solid var(--border); border-radius:100px; padding:5px 14px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; color:var(--text); }
+.gallery-poster-btn.active { color:white; }
+.gallery-poster-btn:hover { opacity:0.85; }
+.gallery-filter-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; align-items:center; }
+.gallery-filter-label { font-size:12px; color:var(--text3); font-weight:600; }
+.gfbtn { background:var(--section-bg); border:1.5px solid var(--border); border-radius:100px; padding:5px 13px; font-family:'DM Sans',sans-serif; font-size:12px; cursor:pointer; transition:all 0.2s; color:var(--text); }
+.gfbtn.active,.gfbtn:hover { background:var(--pine); color:white; border-color:var(--pine); }
+.gallery-toolbar { display:flex; gap:10px; margin-bottom:20px; align-items:center; flex-wrap:wrap; }
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-bottom:20px; }
+.gallery-item { position:relative; border-radius:14px; overflow:hidden; aspect-ratio:4/3; background:var(--section-bg); border:1px solid var(--border); }
+.gallery-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; cursor:pointer; }
+.gallery-item:hover img { transform:scale(1.05); }
+.gallery-del { position:absolute; top:6px; right:6px; background:rgba(0,0,0,0.6); color:white; border:none; border-radius:50%; width:26px; height:26px; font-size:12px; cursor:pointer; opacity:0; transition:opacity 0.2s; display:flex; align-items:center; justify-content:center; }
+.gallery-item:hover .gallery-del { opacity:1; }
+.gallery-caption { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(0,0,0,0.65)); padding:20px 10px 8px; color:white; font-size:11px; font-weight:500; }
+.gallery-poster-tag { position:absolute; top:7px; left:8px; border-radius:100px; padding:3px 9px; font-size:10px; font-weight:700; color:white; backdrop-filter:blur(6px); }
+.gallery-empty { text-align:center; padding:60px 20px; color:var(--text3); }
+.gallery-empty-icon { font-size:48px; margin-bottom:12px; }
+.gallery-empty p { font-size:14px; }
+.url-input { flex:1; padding:9px 14px; border:1.5px solid var(--input-border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); background:var(--input-bg); outline:none; transition:border-color 0.2s; }
+.url-input:focus { border-color:var(--pine); }
+.gallery-upload { position:relative; }
+.gallery-upload input[type=file] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:9999; align-items:center; justify-content:center; flex-direction:column; gap:14px; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:90vw; max-height:80vh; border-radius:12px; object-fit:contain; }
+.lightbox-close { position:fixed; top:20px; right:20px; background:rgba(255,255,255,0.15); border:none; color:white; width:40px; height:40px; border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+
+/* HIGHLIGHTS */
+.highlight-reel { background:var(--card); border-radius:20px; padding:24px; border:1px solid var(--border); margin-bottom:20px; }
+.highlight-reel h3 { font-family:'Playfair Display',serif; font-size:18px; color:var(--text); margin-bottom:4px; }
+.highlight-reel p.sub { font-size:12px; color:var(--text3); margin-bottom:16px; }
+.highlights-list { list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
+.highlight-item { display:flex; align-items:flex-start; gap:10px; padding:10px 12px; background:var(--section-bg); border-radius:12px; border:1px solid var(--border); }
+.hi-star { font-size:18px; flex-shrink:0; }
+.hi-text { flex:1; font-size:13px; color:var(--text2); line-height:1.5; }
+.hi-del { background:none; border:none; cursor:pointer; color:var(--text3); font-size:13px; padding:2px 5px; opacity:0; transition:all 0.15s; }
+.highlight-item:hover .hi-del { opacity:1; }
+.hi-del:hover { color:var(--danger); }
+.hi-add-row { display:flex; gap:8px; }
+
+/* DIRECTIONS */
+.directions-card { background:var(--card); border-radius:20px; padding:26px; border:1px solid var(--border); margin-bottom:20px; }
+.directions-card h3 { font-family:'Playfair Display',serif; font-size:20px; color:var(--text); margin-bottom:4px; }
+.directions-card .sub { font-size:13px; color:var(--text3); margin-bottom:20px; }
+.route-info { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; margin-bottom:22px; }
+.ri { background:var(--section-bg); border-radius:12px; padding:14px; text-align:center; }
+.ri-icon { font-size:22px; margin-bottom:5px; }
+.ri-val { font-size:15px; font-weight:700; color:var(--text); }
+.ri-label { font-size:10px; color:var(--text3); margin-top:2px; text-transform:uppercase; letter-spacing:.5px; }
+.route-steps { list-style:none; display:flex; flex-direction:column; gap:0; }
+.route-step { display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
+.route-step:last-child { border-bottom:none; }
+.rs-num { width:28px; height:28px; background:var(--pine); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
+.rs-content {}
+.rs-title { font-size:14px; font-weight:600; color:var(--text); margin-bottom:3px; }
+.rs-note { font-size:12px; color:var(--text2); line-height:1.5; }
+.rs-dist { font-size:11px; color:var(--text3); margin-top:3px; font-weight:500; }
+.map-open-btn { display:inline-flex; align-items:center; gap:8px; background:var(--pine); color:white; border:none; border-radius:12px; padding:14px 24px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; cursor:pointer; text-decoration:none; transition:background 0.2s; margin-top:6px; }
+.map-open-btn:hover { background:var(--forest); }
+.tips-note { background:var(--section-bg); border-radius:12px; padding:14px 16px; font-size:13px; color:var(--text2); line-height:1.6; margin-top:14px; border-left:3px solid var(--gold); }
+
+/* TIPS */
+.tips-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; }
+.tip-card { background:var(--card); border-radius:16px; padding:18px; border:1px solid var(--border); }
+.tip-card-icon { font-size:26px; margin-bottom:8px; }
+.tip-card h4 { font-family:'Playfair Display',serif; font-size:15px; margin-bottom:6px; color:var(--text); }
+.tip-card p { font-size:12px; color:var(--text2); line-height:1.6; }
+
+/* TOAST */
+.toast { position:fixed; bottom:24px; right:24px; background:var(--pine); color:white; padding:10px 18px; border-radius:100px; font-size:13px; font-weight:600; box-shadow:0 8px 30px rgba(0,0,0,0.2); transform:translateY(70px); opacity:0; transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1); z-index:9999; pointer-events:none; }
+.toast.show { transform:translateY(0); opacity:1; }
+
+/* PRINT */
+@media print {
+  .tabs-wrap,.hero,.weather-strip,.darkmode-btn,.btn,.add-item-btn,.pack-add,.be-add,.gallery-toolbar,.poll-reset,.hi-add-row,.toast { display:none !important; }
+  .tab-panel { display:block !important; page-break-after:always; }
+  body { background:white; color:black; }
+  .card,.day-card,.pack-section,.budget-card,.directions-card { box-shadow:none; border:1px solid #ddd; }
+  .hero-print { display:block !important; }
+}
+.hero-print { display:none; }
+
+
+/* ===== CONFETTI ===== */
+#confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;}
+
+/* ===== CHAT ===== */
+.chat-wrap{display:flex;flex-direction:column;gap:0;background:var(--card);border-radius:20px;border:1px solid var(--border);overflow:hidden;}
+.chat-messages{min-height:340px;max-height:480px;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:10px;background:var(--section-bg);}
+.chat-msg{display:flex;flex-direction:column;gap:3px;max-width:80%;}
+.chat-msg.me{align-self:flex-end;align-items:flex-end;}
+.chat-msg.other{align-self:flex-start;align-items:flex-start;}
+.chat-bubble{padding:10px 14px;border-radius:16px;font-size:13px;line-height:1.5;color:var(--text);word-break:break-word;}
+.chat-msg.me .chat-bubble{background:var(--pine);color:white;border-bottom-right-radius:4px;}
+.chat-msg.other .chat-bubble{background:var(--card);border:1px solid var(--border);border-bottom-left-radius:4px;}
+.chat-meta{font-size:10px;color:var(--text3);display:flex;gap:6px;align-items:center;}
+.chat-avatar{font-size:14px;}
+.chat-empty{text-align:center;color:var(--text3);font-size:13px;padding:40px 20px;font-style:italic;}
+.chat-input-area{padding:16px 20px;border-top:1px solid var(--border);background:var(--card);}
+.chat-name-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+.chat-who-label{font-size:12px;color:var(--text3);font-weight:600;}
+.chat-person-btns{display:flex;gap:6px;flex-wrap:wrap;}
+.chat-person-btn{background:var(--section-bg);border:2px solid var(--border);border-radius:100px;padding:4px 12px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;color:var(--text);}
+.chat-person-btn.active{color:white;}
+.chat-person-btn:hover{opacity:0.85;}
+.chat-compose{display:flex;gap:8px;align-items:flex-end;}
+.chat-textarea{flex:1;padding:10px 14px;border:1.5px solid var(--input-border);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:var(--input-bg);outline:none;resize:none;line-height:1.5;transition:border-color 0.2s;}
+.chat-textarea:focus{border-color:var(--pine);}
+.chat-send-btn{background:var(--pine);color:white;border:none;border-radius:12px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background 0.2s;flex-shrink:0;}
+.chat-send-btn:hover{background:var(--forest);}
+
+/* ===== EMERGENCY ===== */
+.emg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-bottom:20px;}
+.ec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px;}
+.ec-card{background:var(--card);border-radius:18px;padding:20px;border:1px solid var(--border);border-top:4px solid;}
+.ec-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.ec-person{display:flex;align-items:center;gap:8px;}
+.ec-avatar{font-size:24px;}
+.ec-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--text);}
+.ec-edit-btn{background:none;border:1px solid var(--border);border-radius:8px;width:28px;height:28px;cursor:pointer;font-size:13px;color:var(--text3);display:flex;align-items:center;justify-content:center;transition:all 0.15s;flex-shrink:0;}
+.ec-edit-btn:hover{background:var(--section-bg);color:var(--text);}
+.ec-contacts{display:flex;flex-direction:column;gap:6px;}
+.ec-contact{background:var(--section-bg);border-radius:10px;padding:9px 12px;}
+.ec-contact-name{font-size:13px;font-weight:600;color:var(--text);}
+.ec-contact-rel{font-size:11px;color:var(--text3);margin-bottom:2px;}
+.ec-contact-phone{font-size:13px;color:var(--pine);font-weight:600;}
+.ec-empty{font-size:12px;color:var(--text3);font-style:italic;padding:8px 0;}
+/* ec modal rows */
+.ec-row{background:var(--section-bg);border-radius:12px;padding:12px;margin-bottom:8px;display:flex;flex-direction:column;gap:7px;position:relative;}
+.ec-row-del{position:absolute;top:8px;right:8px;background:none;border:none;cursor:pointer;color:var(--text3);font-size:14px;padding:2px 6px;}
+.ec-row-del:hover{color:var(--danger);}
+.ec-row-inputs{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+@media(max-width:480px){.ec-row-inputs{grid-template-columns:1fr;}}
+.emg-card{background:var(--card);border-radius:16px;padding:18px;border:1px solid var(--border);border-left:4px solid;}
+.emg-card.red{border-left-color:#c0392b;}
+.emg-card.orange{border-left-color:#e67e22;}
+.emg-card.blue{border-left-color:#2980b9;}
+.emg-card.green{border-left-color:#27ae60;}
+.emg-icon{font-size:22px;margin-bottom:6px;}
+.emg-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:4px;}
+.emg-num{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.emg-note{font-size:12px;color:var(--text3);line-height:1.5;}
+.emg-tips-card{background:var(--card);border-radius:16px;padding:22px;border:1px solid var(--border);}
+.emg-tips-card h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--text);margin-bottom:14px;}
+.emg-locs{display:flex;flex-direction:column;gap:8px;}
+.emg-loc{display:flex;flex-direction:column;gap:2px;padding:10px 12px;background:var(--section-bg);border-radius:10px;}
+.emg-loc strong{font-size:13px;color:var(--text);}
+.emg-loc span{font-size:12px;color:var(--text3);}
+
+/* ===== RANDOM HIKE PICKER ===== */
+.hike-picker-bar{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px 20px;margin-bottom:20px;flex-wrap:wrap;}
+.hike-picker-label{font-size:13px;color:var(--text3);font-weight:500;}
+.spin-btn{background:linear-gradient(135deg,var(--gold),#e8a020);color:white;border:none;border-radius:100px;padding:9px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 14px rgba(212,168,67,0.4);}
+.spin-btn:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(212,168,67,0.5);}
+.spin-btn:active{transform:scale(0.97);}
+.spin-result{font-size:13px;font-weight:600;color:var(--pine);flex:1;}
+
+/* ===== SUNRISE/SUNSET on day tabs ===== */
+.day-tab-sun{font-size:9px;color:var(--mist);margin-top:2px;opacity:0.8;}
+.day-tab.active .day-tab-sun{color:rgba(255,255,255,0.7);}
+
+footer { text-align:center; padding:36px 24px; color:var(--text3); font-size:12px; border-top:1px solid var(--border); margin-top:16px; }
+footer span { color:var(--sage); }
+@media(max-width:600px){ .hero{padding:36px 18px 32px;} .hero-inner{grid-template-columns:1fr;} .countdown-box{margin-top:16px;} .main{padding:24px 14px;} .tab-btn{padding:12px 14px;font-size:12px;} }
+
+/* ===== LOCK SCREEN ===== */
+#lock-screen {
+  position:fixed; inset:0; z-index:99999;
+  background:linear-gradient(160deg,#0e2518 0%,#1a3a2a 45%,#2d5a3d 100%);
+  display:flex; align-items:center; justify-content:center; padding:24px;
+}
+.lock-box {
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15);
+  border-radius:28px; padding:48px 40px; width:100%; max-width:400px;
+  text-align:center; backdrop-filter:blur(20px);
+  box-shadow:0 30px 80px rgba(0,0,0,0.4);
+}
+.lock-icon { font-size:52px; margin-bottom:16px; }
+.lock-title {
+  font-family:'Playfair Display',serif; font-size:32px; font-weight:900;
+  color:white; margin-bottom:6px; line-height:1.1;
+}
+.lock-title span { color:#d4a843; }
+.lock-sub { font-size:14px; color:#b8d4be; margin-bottom:32px; font-weight:300; }
+.lock-input {
+  width:100%; padding:14px 18px; border-radius:14px;
+  border:2px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.08);
+  font-family:'DM Sans',sans-serif; font-size:16px; color:white;
+  outline:none; text-align:center; letter-spacing:3px;
+  transition:border-color 0.2s; margin-bottom:14px;
+}
+.lock-input::placeholder { letter-spacing:1px; color:rgba(255,255,255,0.35); font-size:14px; }
+.lock-input:focus { border-color:#d4a843; }
+.lock-input.shake {
+  animation:lockShake 0.4s ease;
+  border-color:#c0392b !important;
+}
+@keyframes lockShake {
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-8px)}
+  40%{transform:translateX(8px)}
+  60%{transform:translateX(-5px)}
+  80%{transform:translateX(5px)}
+}
+.lock-btn {
+  width:100%; padding:14px; border-radius:14px; border:none;
+  background:#d4a843; color:#0e2518; font-family:'DM Sans',sans-serif;
+  font-size:15px; font-weight:700; cursor:pointer; transition:all 0.2s;
+  letter-spacing:0.5px;
+}
+.lock-btn:hover { background:#e8c060; transform:translateY(-1px); box-shadow:0 6px 20px rgba(212,168,67,0.4); }
+.lock-btn:active { transform:translateY(0); }
+.lock-error { font-size:13px; color:#e74c3c; margin-top:10px; min-height:18px; font-weight:500; }
+.lock-hint { font-size:12px; color:rgba(255,255,255,0.3); margin-top:20px; }
+
+</style>
+</head>
+<body>
+
+<div id="lock-screen">
+  <div class="lock-box">
+    <div class="lock-icon">🏔️</div>
+    <div class="lock-title">Yosemite <span>Cousins Trip</span></div>
+    <div class="lock-sub">Cousins trip planning — members only</div>
+    <input class="lock-input" id="lock-input" type="password"
+      placeholder="Enter password"
+      onkeydown="if(event.key==='Enter')checkPassword()"
+      autocomplete="off">
+    <button class="lock-btn" onclick="checkPassword()">🔓 Enter Site</button>
+    <div class="lock-error" id="lock-error"></div>
+    <div class="lock-hint">Ask the group chat for the password 😄</div>
+  </div>
+</div>
+
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">🏔️ Cousins Trip 2026</div>
+      <h1>Yosemite <span>National Park</span></h1>
+      <p class="hero-sub">Your complete trip planning guide for the adventure ahead</p>
+      <div class="trip-badges">
+        <span class="badge">📅 May 14–18, 2026</span>
+        <span class="badge">📍 Yosemite Valley, CA</span>
+        <span class="badge">🌿 5 Days</span>
+        <span class="badge">🌸 Peak Spring Season</span>
+        <span class="badge">👥 4–5 People</span>
+      </div>
+    </div>
+    <div class="countdown-box">
+      <div class="countdown-label">⏳ Countdown to Yosemite</div>
+      <div id="countdown-display"></div>
+    </div>
+  </div>
+</header>
+
+<!-- WEATHER STRIP -->
+<div class="weather-strip">
+  <div class="weather-inner">
+    <div class="weather-title">🌤️ Yosemite Valley — May Forecast</div>
+    <div class="weather-days" id="weather-days"></div>
+    <div class="weather-note">Typical May conditions · Check weather.gov for live forecast</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <nav class="tabs-bar">
+    <button class="tab-btn active"  onclick="switchTab('about',this)">🏕️ About</button>
+    <button class="tab-btn"         onclick="switchTab('hikes',this)">🥾 Hikes</button>
+    <button class="tab-btn"         onclick="switchTab('itinerary',this)">📋 Planner</button>
+    <button class="tab-btn"         onclick="switchTab('packing',this)">🎒 Packing</button>
+    <button class="tab-btn"         onclick="switchTab('budget',this)">💰 Budget</button>
+    <button class="tab-btn"         onclick="switchTab('poll',this)">🗳️ Group Poll</button>
+    <button class="tab-btn"         onclick="switchTab('gallery',this)">📸 Gallery</button>
+    <button class="tab-btn"         onclick="switchTab('directions',this)">🚗 Directions</button>
+    <button class="tab-btn"         onclick="switchTab('tips',this)">💡 Tips</button>
+    <button class="tab-btn"         onclick="switchTab('chat',this)">💬 Group Chat</button>
+    <button class="tab-btn"         onclick="switchTab('emergency',this)">🚨 Emergency</button>
+    <button class="darkmode-btn"    onclick="toggleDark()" id="dm-btn" title="Toggle dark mode">🌙</button>
+  </nav>
+</div>
+
+<main class="main">
+
+<!-- ===== ABOUT ===== -->
+<div id="tab-about" class="tab-panel active">
+  <h2 class="section-title">About Yosemite</h2>
+  <p class="section-sub">Everything you need to know before you go</p>
+  <div class="info-grid">
+    <div class="info-card"><div class="info-card-icon">🎟️</div><div class="info-card-label">Entry Fee</div><div class="info-card-value">$35 per vehicle</div><div class="info-card-sub">Valid 7 consecutive days</div></div>
+    <div class="info-card"><div class="info-card-icon">📋</div><div class="info-card-label">Reservations 2026</div><div class="info-card-value">No timed entry required</div><div class="info-card-sub">Updated Feb 2026 by NPS</div></div>
+    <div class="info-card"><div class="info-card-icon">🌡️</div><div class="info-card-label">May Weather</div><div class="info-card-value">50–72°F</div><div class="info-card-sub">Layers recommended; some rain</div></div>
+    <div class="info-card"><div class="info-card-icon">💧</div><div class="info-card-label">Waterfalls</div><div class="info-card-value">Peak season!</div><div class="info-card-sub">Snowmelt = max flow in May</div></div>
+    <div class="info-card"><div class="info-card-icon">🌲</div><div class="info-card-label">Park Size</div><div class="info-card-value">750,000 acres</div><div class="info-card-sub">800+ miles of trails</div></div>
+    <div class="info-card"><div class="info-card-icon">🚌</div><div class="info-card-label">Free Shuttles</div><div class="info-card-value">7 routes</div><div class="info-card-sub">Runs 7 AM – 10 PM daily</div></div>
+    <div class="info-card"><div class="info-card-icon">🏔️</div><div class="info-card-label">Elevation</div><div class="info-card-value">3,999–13,114 ft</div><div class="info-card-sub">Valley floor ~4,000 ft</div></div>
+    <div class="info-card"><div class="info-card-icon">📡</div><div class="info-card-label">Cell Service</div><div class="info-card-value">Very limited</div><div class="info-card-sub">Download offline maps first!</div></div>
+  </div>
+  <div class="card"><h3>🌸 Why May is Magical</h3><p>You picked an incredible time to visit! May is widely considered one of the best months in Yosemite. Waterfalls like Yosemite Falls, Vernal Fall, and Bridalveil Fall are thundering at peak flow from snowmelt. Wildflowers bloom across the valley floor and meadows, and black oaks begin leafing out bright green against the granite walls.</p><p>Temperatures are mild and perfect for hiking — not yet the blazing summer heat. Crowds are noticeably lighter than June–August. Sunrise and sunset light in May is spectacular with clear air and long golden hours.</p><p><strong>Note:</strong> Tioga Road and Glacier Point Road may still be closed mid-May due to snow. Always check <strong>nps.gov/yose</strong> for current road conditions.</p></div>
+  <div class="two-col">
+    <div class="card" style="margin-bottom:0"><h3>🗺️ The 4 Main Areas</h3><ul class="hl"><li>🏞️ Yosemite Valley — heart of the park</li><li>🧊 Glacier Point — panoramic overlooks</li><li>🌲 Wawona — Giant Sequoia grove</li><li>🏔️ Tuolumne Meadows — high alpine</li><li>⛰️ El Capitan — world-famous wall</li><li>🪨 Half Dome — iconic granite peak</li><li>💦 Vernal Fall — must-see waterfall</li><li>🌊 Bridalveil Fall — easy access gem</li></ul></div>
+    <div class="card" style="margin-bottom:0"><h3>🦌 Wildlife You May See</h3><ul class="hl"><li>🐻 Black bears — keep food secured!</li><li>🦌 Mule deer — common in meadows</li><li>🦅 Peregrine falcons — nesting in May</li><li>🐿️ California ground squirrels</li><li>🦊 Coyotes — active at dawn/dusk</li><li>🐦 Steller's jays — bold & noisy</li><li>🐸 Pacific treefrogs — hear at night</li><li>🦎 Western fence lizards</li></ul></div>
+  </div>
+  <div class="card" style="margin-top:20px"><h3>🎯 Things to Do Beyond Hiking</h3><ul class="hl"><li>🚴 Bike rentals in Yosemite Valley</li><li>🛶 Merced River rafting (late May+)</li><li>📸 Tunnel View at sunrise/sunset</li><li>🌄 Glacier Point sunset views</li><li>🧗 Rock climbing intro lessons</li><li>🍺 Dining at The Ahwahnee</li><li>🎨 Ansel Adams Gallery</li><li>🔭 Yosemite Valley Visitor Center</li><li>🌳 Mariposa Grove of Sequoias</li><li>🏊 Swimming in Merced River</li></ul></div>
+  <div class="two-col" style="margin-top:20px">
+    <div class="card" style="margin-bottom:0"><h3>🍽️ Dining Options</h3><p><strong>Curry Village</strong> — pizza, bar & grill, coffee. Most casual and central.</p><p><strong>Degnan's Kitchen</strong> — pizza, sandwiches, quick bites. Great after a long hike.</p><p><strong>The Ahwahnee Dining Room</strong> — elegant and historic. Reserve ahead!</p><p><strong>Yosemite Valley Lodge</strong> — bar & grill with valley views.</p><p><strong>Tip:</strong> Stock up on groceries before entering the park — prices inside are higher.</p></div>
+    <div class="card" style="margin-bottom:0"><h3>🏠 Cabin Tips</h3><p><strong>Tent-cabins</strong> at Curry Village are cozy and social — walls are thin, bring earplugs.</p><p><strong>Yosemite Valley Lodge</strong> — closest hotel to Yosemite Falls. More private rooms.</p><p><strong>Bear boxes</strong> are mandatory for food storage — never leave food in your cabin or car.</p><p><strong>Outside the park:</strong> El Portal and Mariposa have affordable options with less noise.</p></div>
+  </div>
+  <div class="card" style="margin-top:20px"><h3>📜 Park History & Geology</h3><p>Yosemite was carved by glaciers over millions of years, creating its signature sheer granite walls, U-shaped valley, and dramatic waterfalls. El Capitan is the largest exposed granite monolith on Earth. Half Dome's sheer northwest face was formed when glaciers peeled away half the original dome during the ice ages.</p><p>Yosemite became a national park in 1890, largely due to the advocacy of John Muir. The valley was inhabited by the Ahwahneechee people for thousands of years before European contact. Today it's a UNESCO World Heritage Site protecting 400+ vertebrate species and 1,400+ plant species.</p></div>
+</div>
+
+<!-- ===== HIKES ===== -->
+<div id="tab-hikes" class="tab-panel">
+  <h2 class="section-title">Hikes & Trails</h2>
+  <p class="section-sub">Click a trail card to see it on the map. Filter by difficulty below.</p>
+  <div class="hike-filters">
+    <button class="filter-btn active" onclick="filterHikes('all',this)">All Trails</button>
+    <button class="filter-btn" onclick="filterHikes('easy',this)">🟢 Easy</button>
+    <button class="filter-btn" onclick="filterHikes('moderate',this)">🟡 Moderate</button>
+    <button class="filter-btn" onclick="filterHikes('hard',this)">🔴 Hard / Strenuous</button>
+    <button class="filter-btn" onclick="filterHikes('strenuous',this)">💀 Strenuous</button>
+    <span style="width:1px;background:var(--border);margin:0 4px;align-self:stretch;"></span>
+    <button class="filter-btn" onclick="filterArea('Yosemite Valley',this)">🏞️ Valley Only</button>
+    <button class="filter-btn" onclick="filterArea('Glacier Point',this)">🧊 Glacier Point</button>
+    <button class="filter-btn" onclick="filterArea('Wawona',this)">🌲 Wawona</button>
+    <button class="filter-btn" onclick="filterArea('Tioga Road',this)">🏔️ Tioga Road</button>
+    <button class="spin-btn" onclick="randomHike()" style="margin-left:auto">🎲 Random Hike!</button>
+  </div>
+  <div class="hike-picker-bar" id="spin-result-bar" style="display:none">
+    <span class="hike-picker-label">🎲 Today's random pick:</span>
+    <span class="spin-result" id="spin-result-text"></span>
+    <button class="spin-btn" onclick="randomHike()">Spin Again!</button>
+  </div>
+  <div class="hikes-grid" id="hikes-grid"></div>
+  <div class="map-section">
+    <h3 id="map-title">🗺️ Select a Trail to View on Map</h3>
+    <div class="map-embed" id="map-embed"><div style="text-align:center"><div style="font-size:44px">🗺️</div><p style="font-size:13px;color:var(--text3);margin-top:8px">Click any trail card above</p></div></div>
+    <div class="map-info-row" id="map-info-row" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ===== ITINERARY ===== -->
+<div id="tab-itinerary" class="tab-panel">
+  <h2 class="section-title">Day-by-Day Planner</h2>
+  <p class="section-sub">Click "Edit Day" to fully customize title, schedule, and notes. All changes save automatically.</p>
+  <div class="day-tabs" id="day-tabs"></div>
+  <div id="day-panels"></div>
+</div>
+
+<!-- ===== PACKING ===== -->
+<div id="tab-packing" class="tab-panel">
+  <div id="packing-person-select">
+    <h2 class="section-title">🎒 Packing Lists</h2>
+    <p class="section-sub">Who are you? Select your name to view and edit your personal packing list.</p>
+    <div class="person-grid" id="pack-person-grid"></div>
+  </div>
+  <div id="packing-main" style="display:none">
+    <div class="person-header">
+      <div>
+        <h2 class="section-title" id="pack-person-title"></h2>
+        <p class="section-sub">Check off items as you pack. Add, edit (double-click), or delete. Saves automatically.</p>
+      </div>
+      <button class="btn btn-outline" onclick="backToSelect('packing')">← Change Person</button>
+    </div>
+    <div class="pack-layout" id="pack-layout"></div>
+  </div>
+</div>
+
+<!-- ===== BUDGET ===== -->
+<div id="tab-budget" class="tab-panel">
+  <div id="budget-person-select">
+    <h2 class="section-title">💰 Budget Tracker</h2>
+    <p class="section-sub">Who are you? Select your name to track your personal trip expenses.</p>
+    <div class="person-grid" id="budget-person-grid"></div>
+    <div class="budget-group-summary" id="budget-group-summary"></div>
+  </div>
+  <div id="budget-main" style="display:none">
+    <div class="person-header">
+      <div>
+        <h2 class="section-title" id="budget-person-title"></h2>
+        <p class="section-sub">Add your expenses below. All entries save automatically.</p>
+      </div>
+      <button class="btn btn-outline" onclick="backToSelect('budget')">← Change Person</button>
+    </div>
+    <div class="budget-person-total-card" id="budget-person-total-card"></div>
+    <div class="budget-stack" id="budget-stack"></div>
+  </div>
+</div>
+
+<!-- ===== POLL ===== -->
+<div id="tab-poll" class="tab-panel">
+  <div class="poll-header">
+    <div>
+      <h2 class="section-title">🗳️ Group Poll</h2>
+      <p class="section-sub" style="margin-bottom:0">Vote, add new polls, and edit existing ones. All saves automatically.</p>
+    </div>
+  </div>
+  <div class="poll-grid" id="poll-grid"></div>
+</div>
+<!-- Poll edit modal -->
+<div class="poll-modal-bg" id="poll-modal-bg">
+  <div class="poll-modal">
+    <h3 id="pm-title">✏️ Edit Poll</h3>
+    <div class="pm-label">Poll Question / Title</div>
+    <input class="pm-input" id="pm-q" placeholder="e.g. 🏕️ Campfire or cabin tonight?">
+    <div class="pm-label">Subtitle / Description</div>
+    <input class="pm-input" id="pm-sub" placeholder="Optional description">
+    <div class="pm-label">Answer Options</div>
+    <div class="pm-opts-list" id="pm-opts-list"></div>
+    <button class="pm-add-opt" onclick="pmAddOpt()">＋ Add Option</button>
+    <div class="pm-btns">
+      <button class="btn btn-outline" onclick="closePollModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="savePollModal()">💾 Save Poll</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== GALLERY ===== -->
+<div id="tab-gallery" class="tab-panel">
+  <h2 class="section-title">📸 Photo Gallery</h2>
+  <p class="section-sub">Add photos and see who posted what. Filter by person.</p>
+  <div class="gallery-poster-row">
+    <span class="gallery-poster-label">Posting as:</span>
+    <div id="gallery-poster-btns"></div>
+  </div>
+  <div class="gallery-toolbar">
+    <input class="url-input" id="gallery-url-input" placeholder="Paste image URL here..." onkeydown="if(event.key==='Enter')addPhotoByUrl()">
+    <button class="btn btn-primary" onclick="addPhotoByUrl()">+ Add URL</button>
+    <div class="gallery-upload">
+      <button class="btn btn-outline">📁 Upload Photo</button>
+      <input type="file" accept="image/*" multiple onchange="uploadPhotos(this)">
+    </div>
+  </div>
+  <div class="gallery-filter-row">
+    <span class="gallery-filter-label">Filter:</span>
+    <button class="gfbtn active" onclick="setGalleryFilter('all',this)">All Photos</button>
+    <button class="gfbtn" onclick="setGalleryFilter('alan',this)">👦 Alan</button>
+    <button class="gfbtn" onclick="setGalleryFilter('luis',this)">🧑 Luis</button>
+    <button class="gfbtn" onclick="setGalleryFilter('ramiro',this)">👨 Ramiro</button>
+    <button class="gfbtn" onclick="setGalleryFilter('sammy',this)">🧒 Sammy</button>
+  </div>
+  <div class="gallery-grid" id="gallery-grid"></div>
+
+  <div class="highlight-reel">
+    <h3>⭐ Highlight Reel</h3>
+    <p class="sub">Jot down your favorite memories from the trip — moments you never want to forget.</p>
+    <ul class="highlights-list" id="highlights-list"></ul>
+    <div class="hi-add-row">
+      <input class="url-input" id="hi-input" placeholder="Add a highlight moment..." onkeydown="if(event.key==='Enter')addHighlight()">
+      <button class="btn btn-primary" onclick="addHighlight()">+ Add</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DIRECTIONS ===== -->
+<div id="tab-directions" class="tab-panel">
+  <h2 class="section-title">Driving Directions</h2>
+  <p class="section-sub">From Manteca, CA to Yosemite National Park via the Big Oak Flat Entrance (Highway 120 East — super convenient since you're already right on CA-120!).</p>
+  <div class="directions-card">
+    <h3>🚗 Manteca, CA → Yosemite Valley</h3>
+    <p class="sub">Via CA-120 E (Big Oak Flat Entrance) · The most direct route from Manteca</p>
+    <div class="route-info">
+      <div class="ri"><div class="ri-icon">⏱️</div><div class="ri-val">~2 hrs 15 min</div><div class="ri-label">Drive Time</div></div>
+      <div class="ri"><div class="ri-icon">📍</div><div class="ri-val">~130 miles</div><div class="ri-label">Distance</div></div>
+      <div class="ri"><div class="ri-icon">⛽</div><div class="ri-val">Fill up before!</div><div class="ri-label">Gas (limited inside)</div></div>
+      <div class="ri"><div class="ri-icon">🌅</div><div class="ri-val">Leave by 6–7 AM</div><div class="ri-label">Best Arrival Time</div></div>
+    </div>
+    <ol class="route-steps">
+      <li class="route-step"><div class="rs-num">1</div><div class="rs-content"><div class="rs-title">Start in Manteca, CA</div><div class="rs-note">Head east on CA-120 directly from Manteca — you're already on the right highway! This is your main road the entire way to the park entrance.</div><div class="rs-dist">~0 miles</div></div></li>
+      <li class="route-step"><div class="rs-num">2</div><div class="rs-content"><div class="rs-title">Pass through Escalon & Oakdale</div><div class="rs-note">Last major towns with full services. <strong>Fill up on gas and stock up on groceries here</strong> — Oakdale is your best bet. Prices inside the park are significantly higher.</div><div class="rs-dist">~25–35 miles from Manteca</div></div></li>
+      <li class="route-step"><div class="rs-num">3</div><div class="rs-content"><div class="rs-title">Continue through Chinese Camp & Moccasin</div><div class="rs-note">The road starts climbing into the Sierra Nevada foothills here. Scenery gets noticeably more beautiful. Good place to make sure everyone has used the restroom — facilities get sparse ahead.</div><div class="rs-dist">~70 miles from Manteca</div></div></li>
+      <li class="route-step"><div class="rs-num">4</div><div class="rs-content"><div class="rs-title">Pass through Groveland</div><div class="rs-note">Last full-service town before the park entrance. Has gas stations, restaurants, and a great breakfast stop. <strong>Buck Meadows Restaurant</strong> (just past Groveland) is a favorite among Yosemite hikers.</div><div class="rs-dist">~95 miles from Manteca</div></div></li>
+      <li class="route-step"><div class="rs-num">5</div><div class="rs-content"><div class="rs-title">Enter at Big Oak Flat Entrance (CA-120)</div><div class="rs-note">Pay your $35 vehicle fee here. Rangers will hand you a park map and newspaper. Cell service drops significantly past this point — make sure everyone has maps downloaded offline!</div><div class="rs-dist">~115 miles from Manteca</div></div></li>
+      <li class="route-step"><div class="rs-num">6</div><div class="rs-content"><div class="rs-title">Arrive at Yosemite Valley 🎉</div><div class="rs-note">Follow signs toward Yosemite Valley. The descent is breathtaking — El Capitan appears dramatically around a bend. <strong>Stop at Tunnel View</strong> first for the classic panoramic photo of the entire Valley!</div><div class="rs-dist">~130 miles total · ~2 hrs 15 min</div></div></li>
+    </ol>
+    <a href="https://www.google.com/maps/dir/Manteca,+CA/Yosemite+Valley,+CA/@37.6,-120.1,9z/" target="_blank" class="map-open-btn">📍 Open Full Route in Google Maps ↗</a>
+    <div class="tips-note">
+      <strong>🚗 Manteca-specific tips:</strong> You're in great shape starting from Manteca — CA-120 goes almost door to door! Leave by 6–7 AM on May 14 to arrive mid-morning and beat the crowds. Friday morning traffic heading east into the mountains is generally light. On the return trip (May 18), you can take CA-120 W straight back to Manteca, or mix it up with CA-140 through the scenic Merced River Canyon (adds ~15 min but gorgeous). <strong>Note:</strong> GPS and Waze may lose signal inside the park — download offline maps before leaving Manteca or Oakdale.
+    </div>
+  </div>
+</div>
+
+<!-- ===== TIPS ===== -->
+<div id="tab-tips" class="tab-panel">
+  <h2 class="section-title">Essential Tips</h2>
+  <p class="section-sub">Things to know before you hit the trails</p>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-card-icon">⏰</div><h4>Start Early</h4><p>Get to trailheads by 7–8 AM to beat crowds and secure parking. Popular spots like Happy Isles fill up fast.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">💧</div><h4>Stay Hydrated</h4><p>Bring at least 2–3 liters per person for longer hikes. Water is available at trailheads and some points along trails.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">🧥</div><h4>Layer Up</h4><p>May mornings can be 40s°F and afternoons reach 72°F. Pack a light jacket and rain layer — afternoon showers are common.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">🐻</div><h4>Bear Safety</h4><p>Never leave food in your car or cabin — use bear boxes. Keep distance from all wildlife and never feed them.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">🥾</div><h4>Wear Good Shoes</h4><p>Trails can be wet and slippery in May. Waterproof hiking boots with ankle support are strongly recommended.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">🌧️</div><h4>Mist Trail is MISTY</h4><p>Near Vernal and Nevada Falls you WILL get soaked in May. Bring a poncho — it's part of the experience!</p></div>
+    <div class="tip-card"><div class="tip-card-icon">🚌</div><h4>Use the Free Shuttle</h4><p>Park once and use Yosemite's free shuttle system. 7 routes cover nearly all of Yosemite Valley.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">📵</div><h4>Download Offline Maps</h4><p>Cell service is spotty. Download AllTrails or Google Maps offline BEFORE entering the park in Groveland or Oakdale — both are on your route from Manteca.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">☀️</div><h4>Wear Sunscreen</h4><p>At 4,000+ ft elevation you burn faster than at sea level. Apply SPF 30+ even on cloudy days.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">🎟️</div><h4>Half Dome Permit</h4><p>The cables require a permit. Check nps.gov for last-minute walk-up permits released 2 days ahead.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">🚗</div><h4>Parking Strategy</h4><p>Valley lots fill by 9 AM. Arrive early or take the El Capitan shuttle from the Valley Visitor Center.</p></div>
+    <div class="tip-card"><div class="tip-card-icon">🍔</div><h4>Food Strategy</h4><p>Stock up on snacks and meals before entering — prices are higher inside. Degnan's is great for pizza after a long hike.</p></div>
+  </div>
+</div>
+
+<!-- ===== GROUP CHAT ===== -->
+<div id="tab-chat" class="tab-panel">
+  <h2 class="section-title">💬 Group Chat & Notes</h2>
+  <p class="section-sub">Leave messages, reminders, or hype for the crew. Everyone on this device shares the same board.</p>
+  <div class="chat-wrap">
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input-area">
+      <div class="chat-name-row" id="chat-name-row">
+        <div class="chat-who-label">Posting as:</div>
+        <div class="chat-person-btns" id="chat-person-btns"></div>
+      </div>
+      <div class="chat-compose">
+        <textarea class="chat-textarea" id="chat-input" placeholder="Type a message or note for the group..." rows="2" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}"></textarea>
+        <button class="chat-send-btn" onclick="sendChat()">Send ↑</button>
+      </div>
+      <div style="font-size:11px;color:var(--text3);margin-top:6px">Press Enter to send · Shift+Enter for new line</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EMERGENCY ===== -->
+<div id="tab-emergency" class="tab-panel">
+  <h2 class="section-title">🚨 Emergency & Park Info</h2>
+  <p class="section-sub">Save these before you lose cell service — screenshot this page!</p>
+  <div class="emg-grid">
+    <div class="emg-card red"><div class="emg-icon">🚑</div><div class="emg-label">Emergency / 911</div><div class="emg-num">911</div><div class="emg-note">Always works even with no cell signal from most areas</div></div>
+    <div class="emg-card red"><div class="emg-icon">🏥</div><div class="emg-label">Yosemite Medical Clinic</div><div class="emg-num">(209) 372-4637</div><div class="emg-note">Located in Yosemite Village · Open daily in May</div></div>
+    <div class="emg-card orange"><div class="emg-icon">🌲</div><div class="emg-label">Park Rangers (Dispatch)</div><div class="emg-num">(209) 379-1992</div><div class="emg-note">Yosemite Valley dispatch — non-emergency ranger help</div></div>
+    <div class="emg-card orange"><div class="emg-icon">🔥</div><div class="emg-label">Yosemite Fire & EMS</div><div class="emg-num">(209) 372-0322</div><div class="emg-note">Fire station located in Yosemite Valley</div></div>
+    <div class="emg-card blue"><div class="emg-icon">🏨</div><div class="emg-label">Adventist Health Sonora</div><div class="emg-num">(209) 532-5000</div><div class="emg-note">Nearest full hospital · ~1 hr from park entrance via CA-120</div></div>
+    <div class="emg-card blue"><div class="emg-icon">🏨</div><div class="emg-label">Mercy Medical Center (Merced)</div><div class="emg-num">(209) 564-5000</div><div class="emg-note">Nearest hospital via CA-140 · ~1.5 hrs from Valley</div></div>
+    <div class="emg-card green"><div class="emg-icon">🚗</div><div class="emg-label">Yosemite Area Towing (Sonora)</div><div class="emg-num">(209) 532-4994</div><div class="emg-note">24/7 towing service near park — Sonora AAA-affiliated</div></div>
+    <div class="emg-card green"><div class="emg-icon">📞</div><div class="emg-label">NPS General Info Line</div><div class="emg-num">(209) 372-0200</div><div class="emg-note">Road conditions, park closures, general questions</div></div>
+    <div class="emg-card green"><div class="emg-icon">🌐</div><div class="emg-label">NPS Yosemite Website</div><div class="emg-num">nps.gov/yose</div><div class="emg-note">Road conditions, alerts, permit info — check before you go</div></div>
+  </div>
+
+  <!-- PER-PERSON EMERGENCY CONTACTS -->
+  <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--text);margin-bottom:8px;margin-top:8px">👤 Personal Emergency Contacts</h3>
+  <p style="font-size:13px;color:var(--text3);margin-bottom:20px">Each person's emergency contacts in case something happens on the trail. Click ✏️ to add or edit.</p>
+  <div class="ec-grid" id="ec-grid"></div>
+
+  <div class="emg-tips-card" style="margin-top:8px">
+    <h3>📍 Key Locations to Know</h3>
+    <div class="emg-locs">
+      <div class="emg-loc"><strong>Yosemite Valley Lodge</strong><span>Main hub — food, lodging, info desk</span></div>
+      <div class="emg-loc"><strong>Yosemite Village</strong><span>Visitor center, post office, ATM, grocery store</span></div>
+      <div class="emg-loc"><strong>Curry Village (Half Dome Village)</strong><span>First aid station, pizza, gear rental</span></div>
+      <div class="emg-loc"><strong>El Portal (park entrance town)</strong><span>Gas, motel, last stop before Big Oak Flat</span></div>
+      <div class="emg-loc"><strong>Groveland</strong><span>Last full-service town — gas, grocery, pharmacy</span></div>
+      <div class="emg-loc"><strong>Oakdale</strong><span>Last Walmart/major grocery on CA-120 from Manteca</span></div>
+    </div>
+  </div>
+  <div class="emg-tips-card" style="margin-top:16px">
+    <h3>⚠️ Good to Know</h3>
+    <div class="emg-locs">
+      <div class="emg-loc"><strong>Cell service</strong><span>Very limited inside the park. AT&T is best. Download everything offline before entering.</span></div>
+      <div class="emg-loc"><strong>ATM</strong><span>One ATM in Yosemite Village. Bring enough cash. Card accepted most places.</span></div>
+      <div class="emg-loc"><strong>Gas</strong><span>No gas stations inside the park. Fill up in Groveland or El Portal before entering.</span></div>
+      <div class="emg-loc"><strong>Bear encounters</strong><span>Back away slowly. Never run. Make noise. Report all sightings to rangers.</span></div>
+      <div class="emg-loc"><strong>Lost hiker protocol</strong><span>Stay on trail, stay calm, use a whistle, call 911 if signal allows.</span></div>
+    </div>
+  </div>
+</div>
+<!-- Emergency contact edit modal -->
+<div class="poll-modal-bg" id="ec-modal-bg">
+  <div class="poll-modal">
+    <h3 id="ec-modal-title">✏️ Emergency Contacts</h3>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:18px">Add people to call if something happens. Name, relationship, and phone number.</p>
+    <div id="ec-modal-list"></div>
+    <button class="pm-add-opt" onclick="ecAddRow()">＋ Add Contact</button>
+    <div class="pm-btns">
+      <button class="btn btn-outline" onclick="closeEcModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEcModal()">💾 Save Contacts</button>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Made with ❤️ for the <span>cousins trip 2026</span> • Yosemite National Park, California</footer>
+<div class="toast" id="toast">✅ Saved!</div>
+<canvas id="confetti-canvas" style="display:none"></canvas>
+<div class="lightbox" id="lightbox" onclick="closeLightbox()"><button class="lightbox-close" onclick="closeLightbox()">✕</button><img id="lightbox-img" src="" alt=""></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+// ===== FIREBASE SETUP =====
+const firebaseConfig = {
+  databaseURL: "https://yosemite-trip-197197-default-rtdb.firebaseio.com"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// ── Firebase helpers ──
+function fbSet(path, val){ return db.ref(path).set(val); }
+function fbGet(path){ return db.ref(path).get().then(s=>s.exists()?s.val():null); }
+function fbOn(path, cb){ db.ref(path).on('value', s=>cb(s.exists()?s.val():null)); }
+function fbPush(path, val){ return db.ref(path).push(val); }
+function fbRemove(path){ return db.ref(path).remove(); }
+
+// ===== UTILS =====
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function escA(s){return String(s||'').replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
+let _toast;
+function toast(m='✅ Saved!'){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(_toast);_toast=setTimeout(()=>t.classList.remove('show'),2200);}
+// localStorage kept only for theme preference
+function load(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):JSON.parse(JSON.stringify(d));}catch{return JSON.parse(JSON.stringify(d));}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){console.warn(e);}}
+// Firebase data helpers
+function fbSave(path,val){db.ref(path).set(val);}
+function fbLoadOnce(path,def,cb){db.ref(path).get().then(s=>{cb(s.exists()?s.val():def);});}
+function fbListen(path,cb){db.ref(path).on('value',s=>{cb(s.exists()?s.val():null);});}
+
+
+// ===== LOCK SCREEN =====
+const SITE_PASSWORD = 'yosemite$2026';
+const SESSION_KEY = 'yose_unlocked';
+
+function checkPassword() {
+  const inp = document.getElementById('lock-input');
+  const val = inp.value.trim();
+  if (val === SITE_PASSWORD) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    const ls = document.getElementById('lock-screen');
+    ls.style.transition = 'opacity 0.5s ease';
+    ls.style.opacity = '0';
+    setTimeout(() => ls.style.display = 'none', 500);
+  } else {
+    inp.classList.remove('shake');
+    void inp.offsetWidth; // reflow to restart animation
+    inp.classList.add('shake');
+    document.getElementById('lock-error').textContent = '❌ Wrong password — check with the crew!';
+    inp.value = '';
+    setTimeout(() => {
+      document.getElementById('lock-error').textContent = '';
+      inp.classList.remove('shake');
+    }, 2000);
+  }
+}
+
+function initLock() {
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    document.getElementById('lock-screen').style.display = 'none';
+  } else {
+    // keep lock visible, focus input
+    setTimeout(() => document.getElementById('lock-input')?.focus(), 100);
+  }
+}
+initLock();
+
+// ===== DARK MODE =====
+function initTheme(){
+  const saved=localStorage.getItem('yose_theme');
+  const pref=saved||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  document.documentElement.setAttribute('data-theme',pref);
+  document.getElementById('dm-btn').textContent=pref==='dark'?'☀️':'🌙';
+}
+function toggleDark(){
+  const cur=document.documentElement.getAttribute('data-theme');
+  const next=cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  document.getElementById('dm-btn').textContent=next==='dark'?'☀️':'🌙';
+  localStorage.setItem('yose_theme',next);
+}
+initTheme();
+
+// ===== COUNTDOWN =====
+let confettiFired=false;
+function updateCountdown(){
+  const trip=new Date('2026-05-14T08:00:00');
+  const now=new Date();
+  const diff=trip-now;
+  const el=document.getElementById('countdown-display');
+  if(diff<=0){
+    el.innerHTML='<div class="countdown-gone">🎉 We\'re in Yosemite!!</div>';
+    if(!confettiFired){confettiFired=true;launchConfetti();setTimeout(launchConfetti,2500);setTimeout(launchConfetti,5000);}
+    return;
+  }
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  el.innerHTML=`<div class="countdown-units">
+    <div class="cu"><span class="cu-num">${d}</span><span class="cu-label">Days</span></div>
+    <span class="cu-sep">:</span>
+    <div class="cu"><span class="cu-num">${String(h).padStart(2,'0')}</span><span class="cu-label">Hrs</span></div>
+    <span class="cu-sep">:</span>
+    <div class="cu"><span class="cu-num">${String(m).padStart(2,'0')}</span><span class="cu-label">Min</span></div>
+    <span class="cu-sep">:</span>
+    <div class="cu"><span class="cu-num">${String(s).padStart(2,'0')}</span><span class="cu-label">Sec</span></div>
+  </div>`;
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+// ===== WEATHER =====
+const weatherData=[
+  {date:'May 14',day:'Thu',icon:'⛅',hi:68,lo:48,desc:'Partly cloudy'},
+  {date:'May 15',day:'Fri',icon:'🌤️',hi:72,lo:50,desc:'Mostly sunny'},
+  {date:'May 16',day:'Sat',icon:'🌧️',hi:63,lo:47,desc:'Afternoon showers'},
+  {date:'May 17',day:'Sun',icon:'☀️',hi:71,lo:49,desc:'Sunny & clear'},
+  {date:'May 18',day:'Mon',icon:'🌤️',hi:69,lo:48,desc:'Partly cloudy'},
+];
+document.getElementById('weather-days').innerHTML=weatherData.map(w=>`
+  <div class="weather-day">
+    <div class="wd-date">${w.day} ${w.date.split(' ')[1]}</div>
+    <span class="wd-icon">${w.icon}</span>
+    <div class="wd-temp">${w.hi}° / ${w.lo}°</div>
+    <div class="wd-desc">${w.desc}</div>
+  </div>`).join('');
+
+// ===== HIKES =====
+const hikes=[
+  // YOSEMITE VALLEY — EASY
+  {id:1,name:"Bridalveil Fall",difficulty:"easy",distance:"0.5 mi",elevation:"+80 ft",time:"20–30 min",area:"Yosemite Valley",desc:"One of the first iconic views entering the Valley. A paved trail leads to the base of this graceful 620-foot waterfall. Perfect first stop for everyone.",tip:"📸 Best light in the afternoon. Expect to get lightly misted near the base.",mapUrl:"https://www.google.com/maps?q=Bridalveil+Fall+Yosemite",stats:{Distance:"0.5 mi","Elev. Gain":"+80 ft","Est. Time":"20–30 min",Area:"Yosemite Valley"}},
+  {id:2,name:"Lower Yosemite Falls",difficulty:"easy",distance:"1 mi",elevation:"+50 ft",time:"30–45 min",area:"Yosemite Valley",desc:"Short flat loop to the base of North America's tallest waterfall. In May the spray is intense and dramatic. Perfect for all fitness levels.",tip:"💦 The mist soaks you within 50 feet — totally worth it!",mapUrl:"https://www.google.com/maps?q=Lower+Yosemite+Falls+Trail",stats:{Distance:"1 mi","Elev. Gain":"+50 ft","Est. Time":"30–45 min",Area:"Yosemite Valley"}},
+  {id:3,name:"Cook's Meadow Loop",difficulty:"easy",distance:"1 mi",elevation:"+0 ft",time:"30 min",area:"Yosemite Valley",desc:"Flat, easy loop through the heart of Yosemite Valley with stunning views of Half Dome, Sentinel Rock, and Royal Arches. Great for sunrise or golden hour.",tip:"🌅 Best at sunrise or sunset when the valley light is magical.",mapUrl:"https://www.google.com/maps?q=Cooks+Meadow+Loop+Yosemite",stats:{Distance:"1 mi","Elev. Gain":"+0 ft","Est. Time":"30 min",Area:"Yosemite Valley"}},
+  {id:4,name:"Mirror Lake / Mirror Meadow",difficulty:"easy",distance:"5 mi",elevation:"+100 ft",time:"2–3 hrs",area:"Yosemite Valley",desc:"Gentle loop around Mirror Lake with iconic reflections of Half Dome in the still water. Especially beautiful in the morning. Paved path accessible year-round.",tip:"🪞 Go early morning for the best Half Dome reflection before the wind picks up.",mapUrl:"https://www.google.com/maps?q=Mirror+Lake+Yosemite",stats:{Distance:"5 mi","Elev. Gain":"+100 ft","Est. Time":"2–3 hrs",Area:"Yosemite Valley"}},
+  {id:5,name:"Valley Floor Loop",difficulty:"easy",distance:"11.5 mi",elevation:"+200 ft",time:"4–6 hrs",area:"Yosemite Valley",desc:"Scenic loop through Yosemite Valley passing meadows, the Merced River, and iconic viewpoints of El Capitan and Half Dome. Best done by bike.",tip:"🚴 Rent a bike from Curry Village — makes this a breezy 2–3 hour ride!",mapUrl:"https://www.google.com/maps?q=Yosemite+Valley+Floor+Loop",stats:{Distance:"11.5 mi","Elev. Gain":"+200 ft","Est. Time":"4–6 hrs (2–3 by bike)",Area:"Yosemite Valley"}},
+  {id:6,name:"Swinging Bridge Loop",difficulty:"easy",distance:"2.5 mi",elevation:"+50 ft",time:"1–1.5 hrs",area:"Yosemite Valley",desc:"Lovely flat loop along the Merced River passing through meadows with views of Yosemite Falls and Cathedral Rocks. Very peaceful and rarely crowded.",tip:"🌊 Ideal for an easy morning stroll before a big hike day.",mapUrl:"https://www.google.com/maps?q=Swinging+Bridge+Yosemite",stats:{Distance:"2.5 mi","Elev. Gain":"+50 ft","Est. Time":"1–1.5 hrs",Area:"Yosemite Valley"}},
+  {id:7,name:"Happy Isles Loop",difficulty:"easy",distance:"0.8 mi",elevation:"+20 ft",time:"20–30 min",area:"Yosemite Valley",desc:"Short stroll around the Happy Isles nature area at the start of the John Muir Trail. Beautiful Merced River views and a great intro to the backcountry gateway.",tip:"🌿 This is where the Mist Trail and John Muir Trail both begin.",mapUrl:"https://www.google.com/maps?q=Happy+Isles+Yosemite",stats:{Distance:"0.8 mi","Elev. Gain":"+20 ft","Est. Time":"20–30 min",Area:"Yosemite Valley"}},
+  // YOSEMITE VALLEY — MODERATE
+  {id:8,name:"Mist Trail to Vernal Fall",difficulty:"moderate",distance:"3 mi",elevation:"+1,000 ft",time:"2–3 hrs",area:"Yosemite Valley",desc:"The most popular and iconic hike in the park. You WILL get soaked by Vernal Fall's roaring cascades in May — bring a poncho! Stunning rainbow views.",tip:"🌈 Morning light creates rainbows. Start at Happy Isles (Shuttle Stop 16).",mapUrl:"https://www.google.com/maps?q=Mist+Trail+Vernal+Fall+Yosemite",stats:{Distance:"3 mi","Elev. Gain":"+1,000 ft","Est. Time":"2–3 hrs",Area:"Yosemite Valley"}},
+  {id:9,name:"Columbia Rock",difficulty:"moderate",distance:"2 mi",elevation:"+1,000 ft",time:"1.5–2.5 hrs",area:"Yosemite Valley",desc:"First major viewpoint on the Upper Yosemite Falls Trail. Great panoramic views of the Valley without committing to the full strenuous hike above.",tip:"⚡ Perfect if you want a workout with views but not the full 7-mile grind.",mapUrl:"https://www.google.com/maps?q=Columbia+Rock+Yosemite",stats:{Distance:"2 mi","Elev. Gain":"+1,000 ft","Est. Time":"1.5–2.5 hrs",Area:"Yosemite Valley"}},
+  {id:10,name:"Four Mile Trail",difficulty:"moderate",distance:"9.6 mi",elevation:"+3,200 ft",time:"4–6 hrs",area:"Yosemite Valley",desc:"Switchbacking trail from the Valley floor up to Glacier Point with spectacular views the whole way. One of the best viewpoints in the park — if Glacier Point Road is closed, this is your way up.",tip:"🏔️ Hike up, take the Glacier Point bus back down (if running). Check road status.",mapUrl:"https://www.google.com/maps?q=Four+Mile+Trail+Yosemite",stats:{Distance:"9.6 mi RT","Elev. Gain":"+3,200 ft","Est. Time":"4–6 hrs",Area:"Yosemite Valley → Glacier Point"}},
+  {id:11,name:"North Dome via Porcupine Creek",difficulty:"moderate",distance:"9.5 mi",elevation:"+1,100 ft",time:"4–6 hrs",area:"Tioga Road",desc:"Spectacular trail to North Dome with one of the best face-on views of Half Dome you can find anywhere. Far less crowded than Valley trails.",tip:"⚠️ Tioga Road is often closed in mid-May. Check NPS road status before going.",mapUrl:"https://www.google.com/maps?q=North+Dome+Yosemite",stats:{Distance:"9.5 mi","Elev. Gain":"+1,100 ft","Est. Time":"4–6 hrs",Area:"Tioga Road (check closure)"}},
+  // GLACIER POINT AREA
+  {id:12,name:"Sentinel Dome",difficulty:"moderate",distance:"2.2 mi",elevation:"+900 ft",time:"2–3 hrs",area:"Glacier Point",desc:"One of the best 360° views in the park — El Capitan, Half Dome, Yosemite Falls, and the Sierra Nevada all visible from the summit. Much shorter than Half Dome.",tip:"⚠️ Glacier Point Road may be closed mid-May 2026. Check NPS website first.",mapUrl:"https://www.google.com/maps?q=Sentinel+Dome+Yosemite",stats:{Distance:"2.2 mi","Elev. Gain":"+900 ft","Est. Time":"2–3 hrs",Area:"Glacier Point (check road)"}},
+  {id:13,name:"Taft Point",difficulty:"moderate",distance:"2.2 mi",elevation:"+250 ft",time:"1.5–2 hrs",area:"Glacier Point",desc:"Dramatic overlook perched 3,500 feet above the Valley floor with terrifying (thrilling!) views straight down. Strange rock fissures called 'The Fissures' add to the drama.",tip:"😮 Not for those afraid of heights — but absolutely stunning. No guardrails!",mapUrl:"https://www.google.com/maps?q=Taft+Point+Yosemite",stats:{Distance:"2.2 mi","Elev. Gain":"+250 ft","Est. Time":"1.5–2 hrs",Area:"Glacier Point (check road)"}},
+  {id:14,name:"Sentinel Dome + Taft Point Loop",difficulty:"moderate",distance:"5 mi",elevation:"+1,100 ft",time:"3–4 hrs",area:"Glacier Point",desc:"Combine both Glacier Point gems in one loop — Sentinel Dome's 360° summit views and Taft Point's dramatic cliff edge. One of the best half-day hikes in the park.",tip:"🎯 Same trailhead, two incredible destinations. Do both — you won't regret it!",mapUrl:"https://www.google.com/maps?q=Sentinel+Dome+Taft+Point+Loop+Yosemite",stats:{Distance:"5 mi","Elev. Gain":"+1,100 ft","Est. Time":"3–4 hrs",Area:"Glacier Point (check road)"}},
+  // HARD HIKES
+  {id:15,name:"Upper Yosemite Falls",difficulty:"hard",distance:"7.2 mi",elevation:"+2,700 ft",time:"5–8 hrs",area:"Yosemite Valley",desc:"Grueling switchbacks lead to the top of the continent's tallest waterfall. Standing on the cliff watching water plunge 1,430 feet below is jaw-dropping. Start VERY early.",tip:"🌅 Start by 6 AM. Zero shade on upper switchbacks — brutal in afternoon sun.",mapUrl:"https://www.google.com/maps?q=Upper+Yosemite+Falls+Trail",stats:{Distance:"7.2 mi","Elev. Gain":"+2,700 ft","Est. Time":"5–8 hrs",Area:"Yosemite Valley"}},
+  {id:16,name:"Mist Trail to Nevada Fall",difficulty:"hard",distance:"8.7 mi",elevation:"+2,000 ft",time:"5–7 hrs",area:"Yosemite Valley",desc:"Continue past Vernal Fall on the Mist Trail to the stunning 594-foot Nevada Fall. Loop back via John Muir Trail for variety. One of the all-time great Yosemite day hikes.",tip:"💪 Pack lunch and eat at the top of Nevada Fall — incredible views.",mapUrl:"https://www.google.com/maps?q=Nevada+Fall+Yosemite",stats:{Distance:"8.7 mi","Elev. Gain":"+2,000 ft","Est. Time":"5–7 hrs",Area:"Yosemite Valley"}},
+  {id:17,name:"Panorama Trail",difficulty:"hard",distance:"8.5 mi",elevation:"-3,200 ft",time:"4–6 hrs",area:"Glacier Point",desc:"One-way trail from Glacier Point down to the Valley passing Nevada Fall, Illilouette Fall, and Vernal Fall with nonstop jaw-dropping views. Best done with a shuttle.",tip:"🚌 Take the Glacier Point bus up, hike down. Ends at Happy Isles in the Valley.",mapUrl:"https://www.google.com/maps?q=Panorama+Trail+Yosemite",stats:{Distance:"8.5 mi one-way","Elev. Change":"-3,200 ft","Est. Time":"4–6 hrs",Area:"Glacier Point → Valley"}},
+  {id:18,name:"Chilnualna Falls",difficulty:"hard",distance:"8.2 mi",elevation:"+2,200 ft",time:"4–6 hrs",area:"Wawona",desc:"A series of cascading waterfalls in the Wawona area, far fewer crowds than Valley trails. A real hidden gem. Spectacular in May with peak snowmelt.",tip:"💎 One of Yosemite's most underrated hikes. Barely anyone goes here!",mapUrl:"https://www.google.com/maps?q=Chilnualna+Falls+Yosemite",stats:{Distance:"8.2 mi","Elev. Gain":"+2,200 ft","Est. Time":"4–6 hrs",Area:"Wawona"}},
+  {id:19,name:"El Capitan from Yosemite Valley",difficulty:"hard",distance:"12 mi",elevation:"+3,000 ft",time:"6–9 hrs",area:"Yosemite Valley",desc:"Hike up to the top of the world's most famous granite wall. The summit view looking down 3,000 feet to the Valley and across to Half Dome is simply unforgettable.",tip:"🧗 Not a technical climb — it's a trail. But it's long and relentless. Bring lots of water.",mapUrl:"https://www.google.com/maps?q=El+Capitan+Summit+Yosemite",stats:{Distance:"12 mi","Elev. Gain":"+3,000 ft","Est. Time":"6–9 hrs",Area:"Yosemite Valley"}},
+  {id:20,name:"Clouds Rest",difficulty:"hard",distance:"14 mi",elevation:"+2,300 ft",time:"6–9 hrs",area:"Tioga Road",desc:"One of the highest accessible summits in the park at 9,926 ft. The ridge walk to the summit is one of the most dramatic in all of Yosemite — Half Dome looks tiny below you.",tip:"⚠️ Requires Tioga Road to be open. Typically opens late May — check NPS site.",mapUrl:"https://www.google.com/maps?q=Clouds+Rest+Yosemite",stats:{Distance:"14 mi","Elev. Gain":"+2,300 ft","Est. Time":"6–9 hrs",Area:"Tioga Road (check closure)"}},
+  // STRENUOUS
+  {id:21,name:"Half Dome",difficulty:"strenuous",distance:"16 mi",elevation:"+4,800 ft",time:"10–12 hrs",area:"Yosemite Valley",desc:"The ultimate Yosemite challenge. The final 400 ft requires pulling up steel cables bolted into the granite. Cables typically installed late May — may not be up May 14–18. Permit required.",tip:"🎟️ Permit required via NPS lottery. Check nps.gov for last-minute walk-up availability.",mapUrl:"https://www.google.com/maps?q=Half+Dome+Yosemite",stats:{Distance:"16 mi","Elev. Gain":"+4,800 ft","Est. Time":"10–12 hrs",Area:"Yosemite Valley (permit needed)"}},
+  {id:22,name:"Mount Hoffmann",difficulty:"strenuous",distance:"10.4 mi",elevation:"+1,800 ft",time:"5–8 hrs",area:"Tioga Road",desc:"The geographic center of Yosemite National Park. Summit at 10,850 ft with 360° views of the Sierra Nevada, Tuolumne Meadows, and Yosemite Valley below. Truly epic.",tip:"⚠️ Requires Tioga Road to be open. Often still closed mid-May.",mapUrl:"https://www.google.com/maps?q=Mount+Hoffmann+Yosemite",stats:{Distance:"10.4 mi","Elev. Gain":"+1,800 ft","Est. Time":"5–8 hrs",Area:"Tioga Road (check closure)"}},
+  {id:23,name:"Half Dome via Yosemite Falls",difficulty:"strenuous",distance:"22 mi",elevation:"+6,200 ft",time:"Full day",area:"Yosemite Valley",desc:"Link Upper Yosemite Falls with Half Dome in a massive loop — one of the longest day hikes in the park. Only for the very fit and very experienced. A true bucket-list day.",tip:"🏅 Start at 4 AM. This is a full dawn-to-dusk mission. Not for the faint of heart!",mapUrl:"https://www.google.com/maps?q=Half+Dome+Yosemite",stats:{Distance:"22 mi","Elev. Gain":"+6,200 ft","Est. Time":"Full day (12–16 hrs)",Area:"Yosemite Valley (permit needed)"}},
+  // MARIPOSA GROVE / WAWONA
+  {id:24,name:"Mariposa Grove of Giant Sequoias",difficulty:"easy",distance:"2–6 mi",elevation:"+1,000 ft",time:"1.5–4 hrs",area:"Wawona",desc:"Walk among the largest living things on Earth — some sequoias here are 3,000 years old. The Grizzly Giant and California Tunnel Tree are highlights. Magical in May.",tip:"🌲 Go early morning to have the grove mostly to yourself.",mapUrl:"https://www.google.com/maps?q=Mariposa+Grove+Yosemite",stats:{Distance:"2–6 mi","Elev. Gain":"+1,000 ft","Est. Time":"1.5–4 hrs",Area:"Wawona"}},
+  {id:25,name:"Wawona Meadow Loop",difficulty:"easy",distance:"3.5 mi",elevation:"+50 ft",time:"1–1.5 hrs",area:"Wawona",desc:"Flat, peaceful loop around the historic Wawona meadow. Great for wildlife spotting — deer are common here. Lovely in spring with wildflowers blooming.",tip:"🦌 Prime deer and bird spotting territory at dawn and dusk.",mapUrl:"https://www.google.com/maps?q=Wawona+Meadow+Yosemite",stats:{Distance:"3.5 mi","Elev. Gain":"+50 ft","Est. Time":"1–1.5 hrs",Area:"Wawona"}},
+];
+function _OLD_renderHikes_REMOVED(){
+  const g=document.getElementById('hikes-grid');
+  const list=filter==='all'?hikes:hikes.filter(h=>h.difficulty===filter);
+  g.innerHTML=list.map(h=>`<div class="hike-card" id="hike-${h.id}" onclick="selectHike(${h.id})">
+    <div class="hike-header"><div class="hike-name">${h.name}</div><span class="diff ${h.difficulty}">${h.difficulty}</span></div>
+    <div class="hike-body">
+      <div class="hike-stats"><span class="hike-stat">📏 ${h.distance}</span><span class="hike-stat">⬆️ ${h.elevation}</span><span class="hike-stat">⏱️ ${h.time}</span></div>
+      <div class="hike-desc">${h.desc}</div>
+      <div class="hike-tip">${h.tip}</div>
+    </div></div>`).join('');
+}
+function filterHikes(t,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderHikes('diff',t);}
+function filterArea(area,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderHikes('area',area);}
+function renderHikes(mode='diff',val='all'){
+  const g=document.getElementById('hikes-grid');
+  let list=hikes;
+  if(mode==='diff'&&val!=='all') list=hikes.filter(h=>h.difficulty===val);
+  if(mode==='area') list=hikes.filter(h=>h.area&&h.area.includes(val));
+  g.innerHTML=list.map(h=>`<div class="hike-card" id="hike-${h.id}" onclick="selectHike(${h.id})">
+    <div class="hike-header"><div class="hike-name">${h.name}</div><span class="diff ${h.difficulty}">${h.difficulty}</span></div>
+    <div class="hike-body">
+      <div class="hike-stats"><span class="hike-stat">📏 ${h.distance}</span><span class="hike-stat">⬆️ ${h.elevation}</span><span class="hike-stat">⏱️ ${h.time}</span></div>
+      <div class="hike-desc">${h.desc}</div>
+      <div class="hike-tip">${h.tip}</div>
+    </div></div>`).join('');
+}
+function randomHike(){
+  const h=hikes[Math.floor(Math.random()*hikes.length)];
+  document.getElementById('spin-result-bar').style.display='flex';
+  document.getElementById('spin-result-text').textContent=h.name+' ('+h.difficulty+' · '+h.distance+')';
+  document.querySelectorAll('.hike-card').forEach(c=>c.classList.remove('selected'));
+  setTimeout(()=>{selectHike(h.id);const el=document.getElementById('hike-'+h.id);el?.scrollIntoView({behavior:'smooth',block:'center'});},200);
+}
+function selectHike(id){
+  const h=hikes.find(x=>x.id===id);if(!h)return;
+  document.querySelectorAll('.hike-card').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('hike-'+id)?.classList.add('selected');
+  document.getElementById('map-title').textContent='🗺️ '+h.name;
+  document.getElementById('map-embed').innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8f3ec,#c5e0cd);border-radius:12px;gap:12px;padding:20px">
+    <div style="font-size:38px">🗺️</div>
+    <div style="font-weight:600;color:#1a3a2a;font-size:15px;text-align:center">${h.name}</div>
+    <div style="font-size:12px;color:#4a5a50;text-align:center;max-width:260px">Click the button below to open in Google Maps</div>
+    <a href="${h.mapUrl}" target="_blank" class="map-link-btn">📍 Open in Google Maps ↗</a>
+  </div>`;
+  const ir=document.getElementById('map-info-row');ir.style.display='grid';
+  ir.innerHTML=Object.entries(h.stats).map(([k,v])=>`<div class="mii"><strong>${esc(v)}</strong>${esc(k)}</div>`).join('');
+}
+
+// ===== ITINERARY =====
+const DEFAULT_DAYS=[
+  {date:"May 14",label:"Thu",title:"Arrival Day",subtitle:"Check in, explore the Valley",
+   schedule:[{time:"Afternoon",activity:"Arrive & Check In",note:"Get settled at your accommodation. Pick up supplies in El Portal or at Yosemite Village."},{time:"Late Afternoon",activity:"Bridalveil Fall",note:"Quick, easy 30-min hike. Perfect first taste of Yosemite. Great photo op!"},{time:"Evening",activity:"Tunnel View Sunset",note:"Drive to Tunnel View for the classic panorama of the Valley at golden hour. Unmissable."},{time:"Night",activity:"Dinner & Rest Up",note:"Eat at Curry Village or Degnan's Kitchen. Get to bed early — big days ahead!"}],
+   notes:"Arrival day — easy and scenic. Get oriented and save your energy for the big hikes!"},
+  {date:"May 15",label:"Fri",title:"Waterfall Day",subtitle:"Mist Trail & Vernal Fall",
+   schedule:[{time:"7:00 AM",activity:"Early Breakfast & Depart",note:"Grab food and head to Happy Isles trailhead early to beat the crowds."},{time:"8:00 AM",activity:"Mist Trail to Vernal Fall",note:"The park's most iconic hike! Bring a poncho — you WILL get soaked in May. Look for rainbows!"},{time:"11:00 AM",activity:"Optional: Continue to Nevada Fall",note:"If the group has energy, push on to Nevada Fall — stunning views and well worth it."},{time:"1:00 PM",activity:"Lunch at the Valley",note:"Refuel at Curry Village or eat a packed lunch by the Merced River."},{time:"Afternoon",activity:"Lower Yosemite Falls",note:"Easy 1-mile loop to the base of North America's tallest waterfall. Dramatic in May!"},{time:"Evening",activity:"Rest & Dinner",note:"You earned it. Dinner at the lodge or cook at camp."}],
+   notes:"This is your big waterfall day! The Mist Trail is the crown jewel of Yosemite hikes."},
+  {date:"May 16",label:"Sat",title:"Valley Exploration",subtitle:"Biking, El Capitan & more",
+   schedule:[{time:"Morning",activity:"Rent Bikes at Curry Village",note:"Bike the Valley Floor Loop (11 miles) for amazing views of El Capitan and Half Dome."},{time:"Midday",activity:"El Capitan Meadow",note:"Lay in the meadow and watch rock climbers on the 3,000-ft granite wall. Bring binoculars!"},{time:"Afternoon",activity:"Valley Visitor Center",note:"Learn about the geology, history, and wildlife of Yosemite. Great exhibits."},{time:"Late Afternoon",activity:"Merced River Relax",note:"Enjoy the river area near Sentinel Beach. Bring a blanket and take it easy."},{time:"Sunset",activity:"Valley View Overlook",note:"Classic Yosemite Valley reflection shot at dusk."}],
+   notes:"A fun, active day that doesn't require intense hiking. Great for exploring the Valley at a chill pace."},
+  {date:"May 17",label:"Sun",title:"Big Hike Day",subtitle:"Upper Yosemite Falls or Sentinel Dome",
+   schedule:[{time:"6:00 AM",activity:"EARLY Start",note:"For Upper Yosemite Falls: start at Columbia Rock trailhead. For Glacier Point area, check road status first."},{time:"6:30 AM",activity:"Upper Yosemite Falls (Strenuous)",note:"7.2 miles, +2,700 ft elevation. Incredible views from the top. Or opt for Sentinel Dome."},{time:"Afternoon",activity:"Mariposa Grove of Sequoias",note:"If energy allows, drive to Mariposa Grove to see giant sequoia trees — some 3,000 years old!"},{time:"Evening",activity:"Ahwahnee Hotel Dinner",note:"Treat yourselves to a meal at the historic Ahwahnee Hotel. Reserve ahead!"}],
+   notes:"Your hardest hiking day — save this for when everyone is rested and ready. Start EARLY."},
+  {date:"May 18",label:"Mon",title:"Final Day & Departure",subtitle:"Last views before heading home",
+   schedule:[{time:"Morning",activity:"Sunrise at Mirror Lake",note:"Mirror Lake Trail is a gentle 5-mile loop with beautiful reflections of Half Dome."},{time:"Midday",activity:"Last Hike or Sightseeing",note:"One final easy stroll — Bridalveil Fall again, Cook's Meadow, or just soak it all in."},{time:"Afternoon",activity:"Lunch & Gift Shop",note:"Grab souvenirs at Yosemite Village. Don't forget a National Park passport stamp!"},{time:"Late Afternoon",activity:"Head Home 🏠",note:"Safe travels! Leave by 3 PM to avoid traffic on CA-120 back toward Tracy."}],
+   notes:"Keep it relaxed — save enough energy for the drive home. End with your favorite view of the trip!"}
+];
+
+const SUN_TIMES={
+  'May 14':{rise:'6:08 AM',set:'7:57 PM'},
+  'May 15':{rise:'6:07 AM',set:'7:58 PM'},
+  'May 16':{rise:'6:06 AM',set:'7:59 PM'},
+  'May 17':{rise:'6:05 AM',set:'8:00 PM'},
+  'May 18':{rise:'6:04 AM',set:'8:01 PM'},
+};
+let itinerary=JSON.parse(JSON.stringify(DEFAULT_DAYS));
+fbListen('itinerary', val=>{
+  if(val) itinerary=val;
+  else itinerary=JSON.parse(JSON.stringify(DEFAULT_DAYS));
+  renderItinerary();
+});
+let curDay=0,editingDay=false,newCtr={};
+function renderItinerary(){
+  document.getElementById('day-tabs').innerHTML=itinerary.map((d,i)=>`
+    <div class="day-tab${i===curDay?' active':''}" onclick="switchDay(${i})">
+      <div class="day-tab-label">${d.label}</div>
+      <div class="day-tab-date">${d.date}</div>
+      <div class="day-tab-sun">${SUN_TIMES[d.date]?'🌅'+SUN_TIMES[d.date].rise+' 🌇'+SUN_TIMES[d.date].set:''}</div>
+    </div>`).join('');
+  document.getElementById('day-panels').innerHTML=itinerary.map((d,i)=>`
+    <div class="day-panel${i===curDay?' active':''}" id="dpanel-${i}">
+      <div class="day-card" id="dcard-${i}"></div>
+    </div>`).join('');
+  itinerary.forEach((_,i)=>drawDay(i));
+}
+function drawDay(i){
+  const d=itinerary[i],el=document.getElementById('dcard-'+i);if(!el)return;
+  if(editingDay&&curDay===i){
+    el.innerHTML=`
+      <div class="day-card-header">
+        <div class="day-title-area"><h3>✏️ Editing: ${esc(d.date)}</h3><p>Make changes then save</p></div>
+        <div class="day-header-right">
+          <button class="btn btn-primary" onclick="saveDay(${i})">💾 Save Changes</button>
+          <button class="btn btn-outline" onclick="cancelEdit(${i})">✕ Cancel</button>
+        </div>
+      </div>
+      <div class="edit-banner">✏️ Edit mode — change any field, add or remove activities, then save.</div>
+      <div class="day-title-edit">
+        <div><div class="edit-label">Day Title</div><input class="edit-input" id="et-${i}" value="${escA(d.title)}"></div>
+        <div><div class="edit-label">Subtitle / Theme</div><input class="edit-input" id="es-${i}" value="${escA(d.subtitle)}"></div>
+      </div>
+      <div class="edit-label">Schedule Items</div>
+      <div class="sched-list" id="sl-${i}">
+        ${d.schedule.map((s,si)=>schedHTML(i,si,s)).join('')}
+      </div>
+      <button class="add-item-btn" onclick="addItem(${i})">＋ Add Activity</button>
+      <div class="notes-label">📝 Day Notes</div>
+      <textarea class="notes-edit" id="en-${i}">${esc(d.notes)}</textarea>`;
+  } else {
+    el.innerHTML=`
+      <div class="day-card-header">
+        <div class="day-title-area"><h3>${esc(d.title)}</h3><p>${esc(d.date)}, 2026 · ${esc(d.subtitle)}</p></div>
+        <div class="day-header-right"><button class="btn btn-outline" onclick="startEdit(${i})">✏️ Edit Day</button></div>
+      </div>
+      <div class="timeline">
+        ${d.schedule.map(s=>`<div class="timeline-item">
+          <div class="ttime">${esc(s.time)}</div>
+          <div class="tactivity">${esc(s.activity)}</div>
+          ${s.note?`<div class="tnote">${esc(s.note)}</div>`:''}
+        </div>`).join('')}
+      </div>
+      <div class="notes-label">📝 Day Notes</div>
+      <div class="day-notes-view">${esc(d.notes)}</div>`;
+  }
+}
+function schedHTML(di,si,s){
+  return `<div class="sched-item" id="si-${di}-${si}">
+    <button class="item-del" onclick="delItem(${di},${si})">✕</button>
+    <div class="sched-row">
+      <div><div class="edit-label">Time</div><input class="edit-input" id="st-${di}-${si}" value="${escA(s.time)}" placeholder="e.g. 9:00 AM"></div>
+      <div><div class="edit-label">Activity</div><input class="edit-input" id="sa-${di}-${si}" value="${escA(s.activity)}" placeholder="Activity name"></div>
+    </div>
+    <div><div class="edit-label">Notes</div><textarea class="edit-textarea" id="sn-${di}-${si}" placeholder="Details...">${esc(s.note)}</textarea></div>
+  </div>`;
+}
+function startEdit(i){editingDay=true;curDay=i;drawDay(i);}
+function cancelEdit(i){editingDay=false;drawDay(i);}
+function saveDay(i){
+  const d=itinerary[i];
+  d.title=(document.getElementById('et-'+i).value||d.title).trim();
+  d.subtitle=(document.getElementById('es-'+i).value||'').trim();
+  d.notes=document.getElementById('en-'+i).value;
+  const sc=[];
+  d.schedule.forEach((_,si)=>{
+    const te=document.getElementById(`st-${i}-${si}`);
+    if(te)sc.push({time:te.value.trim(),activity:document.getElementById(`sa-${i}-${si}`).value.trim(),note:document.getElementById(`sn-${i}-${si}`).value.trim()});
+  });
+  let n=0;while(true){const te=document.getElementById(`st-${i}-new${n}`);if(!te)break;sc.push({time:te.value.trim(),activity:document.getElementById(`sa-${i}-new${n}`).value.trim(),note:document.getElementById(`sn-${i}-new${n}`).value.trim()});n++;}
+  d.schedule=sc.filter(s=>s.activity||s.time);
+  fbSave('itinerary',itinerary);toast('✅ Day saved!');
+  editingDay=false;drawDay(i);
+}
+function addItem(di){
+  if(!newCtr[di])newCtr[di]=0;
+  const d=itinerary[di],key=`new${d.schedule.length+newCtr[di]}`;newCtr[di]++;
+  const list=document.getElementById('sl-'+di);
+  const div=document.createElement('div');div.className='sched-item';div.id=`si-${di}-${key}`;
+  div.innerHTML=`<button class="item-del" onclick="this.parentElement.remove()">✕</button>
+    <div class="sched-row">
+      <div><div class="edit-label">Time</div><input class="edit-input" id="st-${di}-${key}" placeholder="e.g. 9:00 AM"></div>
+      <div><div class="edit-label">Activity</div><input class="edit-input" id="sa-${di}-${key}" placeholder="Activity name"></div>
+    </div>
+    <div><div class="edit-label">Notes</div><textarea class="edit-textarea" id="sn-${di}-${key}" placeholder="Details..."></textarea></div>`;
+  list.appendChild(div);div.querySelector('input')?.focus();
+}
+function delItem(di,si){document.getElementById(`si-${di}-${si}`)?.remove();}
+function switchDay(idx){
+  if(editingDay&&curDay!==idx){if(!confirm('Unsaved changes — switch anyway?'))return;editingDay=false;drawDay(curDay);}
+  curDay=idx;
+  document.querySelectorAll('.day-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.day-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+
+// ===== PEOPLE CONFIG =====
+const PEOPLE=[
+  {id:'alan',   name:'Alan',   avatar:'👦', color:'#2d5a3d'},
+  {id:'luis',   name:'Luis',   avatar:'🧑', color:'#4a8fa8'},
+  {id:'ramiro', name:'Ramiro', avatar:'👨', color:'#d4a843'},
+  {id:'sammy',  name:'Sammy',  avatar:'🧒', color:'#9b59b6'},
+];
+let curPackPerson=null, curBudgetPerson=null;
+
+function backToSelect(tab){
+  if(tab==='packing'){
+    curPackPerson=null;
+    document.getElementById('packing-person-select').style.display='';
+    document.getElementById('packing-main').style.display='none';
+    renderPackPersonSelect();
+  } else {
+    curBudgetPerson=null;
+    document.getElementById('budget-person-select').style.display='';
+    document.getElementById('budget-main').style.display='none';
+    renderBudgetPersonSelect();
+  }
+}
+
+// ===== PACKING =====
+const DP_BASE={
+  hiking:{title:"🥾 Hiking & Outdoors",items:["Waterproof hiking boots","Hiking socks (wool or synthetic)","Trekking poles","Daypack / backpack","Water bottles (2–3 liters each)","Water filter or purification tabs","High-SPF sunscreen","Sunglasses with UV protection","Wide-brim hat or cap","Rain jacket / poncho (MUST for Mist Trail!)","Headlamp + extra batteries","First aid kit","Blister kit / moleskin","Bug spray","Trail snacks & energy bars","Packed lunches for hike days","AllTrails downloaded offline"],checked:[]},
+  clothing:{title:"👕 Clothing & Layers",items:["Base layer (moisture-wicking)","Fleece or mid-layer jacket","Puffy jacket / insulating layer","Waterproof shell / rain jacket","Hiking pants or convertible pants","Shorts (for warm afternoons)","Warm socks (at least 3 pairs)","Underwear (quick-dry is ideal)","Casual clothes for evenings","Sleepwear / PJs","Swimsuit (for river days)","Warm beanie","Light gloves"],checked:[]},
+  cabin:{title:"🏡 Cabin Essentials",items:["Toiletries (toothbrush, toothpaste, etc.)","Shampoo & conditioner","Body wash / soap","Towels","Hand sanitizer","Medications / prescriptions","Earplugs (cabin walls are thin!)","Portable speaker","Playing cards / games","Snacks & drinks for the cabin","Groceries stocked before entering park","Extension cord / power strip","Phone chargers & cables","Extra cash (ATM limited in park)","Reusable grocery bags","Trash bags","Dish soap & sponge"],checked:[]},
+  tech:{title:"📱 Tech & Documents",items:["Phones (fully charged)","Phone chargers","Portable power bank","Camera + extra memory cards","Camera charger","Download AllTrails offline","Download Google Maps offline","Screenshot park map","National Parks Pass (if you have one)","Printed reservation confirmation","Photo ID / driver's licenses","Health insurance cards","Emergency contact list"],checked:[]}
+};
+// in-memory packing cache, loaded from Firebase
+const _packCache={};
+function getPersonPacking(pid){
+  const data=_packCache[pid]||JSON.parse(JSON.stringify(DP_BASE));
+  Object.keys(DP_BASE).forEach(k=>{if(!data[k])data[k]=JSON.parse(JSON.stringify(DP_BASE[k]));if(!data[k].checked)data[k].checked=[];});
+  return data;
+}
+function savePersonPacking(pid,data){
+  _packCache[pid]=data;
+  fbSave('packing/'+pid, data);
+}
+// listen for packing changes
+['alan','luis','ramiro','sammy'].forEach(pid=>{
+  fbListen('packing/'+pid, val=>{
+    if(val){_packCache[pid]=val;}
+    if(curPackPerson===pid) renderPacking();
+    renderPackPersonSelect();
+  });
+});
+
+function renderPackPersonSelect(){
+  const grid=document.getElementById('pack-person-grid');
+  grid.innerHTML=PEOPLE.map(p=>{
+    const pdata=getPersonPacking(p.id);
+    const total=Object.values(pdata).reduce((a,s)=>a+s.items.length,0);
+    const checked=Object.values(pdata).reduce((a,s)=>a+(s.checked||[]).length,0);
+    return `<div class="person-card" onclick="selectPackPerson('${p.id}')" style="border-color:${checked===total&&total>0?p.color:'var(--border)'}">
+      <div class="person-avatar">${p.avatar}</div>
+      <div class="person-name">${p.name}</div>
+      <div class="person-sub">${checked}/${total} items packed</div>
+    </div>`;
+  }).join('');
+}
+function selectPackPerson(pid){
+  curPackPerson=pid;
+  const p=PEOPLE.find(x=>x.id===pid);
+  document.getElementById('packing-person-select').style.display='none';
+  document.getElementById('packing-main').style.display='';
+  document.getElementById('pack-person-title').textContent=p.avatar+' '+p.name+"'s Packing List";
+  renderPacking();
+}
+function renderPacking(){
+  if(!curPackPerson)return;
+  const pdata=getPersonPacking(curPackPerson);
+  document.getElementById('pack-layout').innerHTML=Object.keys(DP_BASE).map(key=>{
+    const s=pdata[key],total=s.items.length,checked=(s.checked||[]).length;
+    return `<div class="pack-section">
+      <div class="pack-hdr">
+        <div class="pack-title">${s.title}</div>
+        <div class="pack-meta"><span class="pack-prog"><span>${checked}</span>/${total}</span><button class="pack-clear" onclick="clearPack('${key}')">Reset ✓</button></div>
+      </div>
+      <ul class="pack-list" id="pl-${key}">
+        ${s.items.map((item,idx)=>packHTML(key,item,idx,s.checked||[])).join('')}
+      </ul>
+      <div class="pack-add"><input class="pack-ai" id="pi-${key}" placeholder="Add item..." onkeydown="if(event.key==='Enter')addPack('${key}')"><button class="pack-ab" onclick="addPack('${key}')">+ Add</button></div>
+    </div>`;
+  }).join('');
+}
+function packHTML(key,item,idx,checked){
+  const on=checked.includes(item);
+  return `<li class="pack-item${on?' done':''}" id="pi-${key}-${idx}">
+    <input type="checkbox" class="pack-cb"${on?' checked':''} onchange="togglePack('${key}','${escA(item)}',this.checked)">
+    <span class="pil" ondblclick="editPack('${key}',${idx})">${esc(item)}</span>
+    <div class="pack-actions">
+      <button class="pibtn" onclick="editPack('${key}',${idx})">✏️</button>
+      <button class="pibtn del" onclick="delPack('${key}',${idx})">🗑️</button>
+    </div>
+  </li>`;
+}
+function togglePack(key,item,on){
+  const pdata=getPersonPacking(curPackPerson);
+  if(!pdata[key].checked)pdata[key].checked=[];
+  if(on){if(!pdata[key].checked.includes(item))pdata[key].checked.push(item);}
+  else{pdata[key].checked=pdata[key].checked.filter(x=>x!==item);}
+  savePersonPacking(curPackPerson,pdata);renderPacking();
+}
+function addPack(key){
+  const inp=document.getElementById('pi-'+key),val=inp.value.trim();if(!val)return;
+  const pdata=getPersonPacking(curPackPerson);
+  pdata[key].items.push(val);savePersonPacking(curPackPerson,pdata);inp.value='';renderPacking();toast('✅ Item added!');
+}
+function delPack(key,idx){
+  const pdata=getPersonPacking(curPackPerson);
+  const item=pdata[key].items[idx];pdata[key].items.splice(idx,1);
+  pdata[key].checked=(pdata[key].checked||[]).filter(x=>x!==item);
+  savePersonPacking(curPackPerson,pdata);renderPacking();
+}
+function editPack(key,idx){
+  const pdata=getPersonPacking(curPackPerson);
+  const li=document.getElementById(`pi-${key}-${idx}`);if(!li)return;
+  const item=pdata[key].items[idx];
+  li.querySelector('.pil').innerHTML=`<input class="pil-edit" id="pedit" value="${escA(item)}" onblur="savePack('${key}',${idx})" onkeydown="if(event.key==='Enter')savePack('${key}',${idx});if(event.key==='Escape')renderPacking()">`;
+  document.getElementById('pedit')?.focus();
+}
+function savePack(key,idx){
+  const inp=document.getElementById('pedit');if(!inp)return;
+  const nv=inp.value.trim();
+  if(nv){
+    const pdata=getPersonPacking(curPackPerson);
+    const old=pdata[key].items[idx];pdata[key].items[idx]=nv;
+    const ci=(pdata[key].checked||[]).indexOf(old);if(ci>=0)pdata[key].checked[ci]=nv;
+    savePersonPacking(curPackPerson,pdata);toast('✅ Updated!');
+  }
+  renderPacking();
+}
+function clearPack(key){
+  const pdata=getPersonPacking(curPackPerson);
+  pdata[key].checked=[];savePersonPacking(curPackPerson,pdata);renderPacking();
+}
+
+// ===== BUDGET =====
+const BCAT={
+  entry:{label:"Park Entry & Permits",icon:"🎟️",color:"#2d5a3d"},
+  food:{label:"Food & Dining",icon:"🍔",color:"#d4a843"},
+  gear:{label:"Gear & Supplies",icon:"🎒",color:"#6a9a72"},
+  gas:{label:"Gas & Transportation",icon:"⛽",color:"#8a7968"}
+};
+const _budgetCache={};
+function getPersonBudget(pid){
+  const def={};Object.keys(BCAT).forEach(k=>{def[k]={...BCAT[k],entries:[]};});
+  const data=_budgetCache[pid]||def;
+  Object.keys(BCAT).forEach(k=>{if(!data[k])data[k]={...BCAT[k],entries:[]};if(!data[k].entries)data[k].entries=[];});
+  return data;
+}
+function savePersonBudget(pid,data){
+  _budgetCache[pid]=data;
+  fbSave('budget/'+pid, data);
+}
+['alan','luis','ramiro','sammy'].forEach(pid=>{
+  fbListen('budget/'+pid, val=>{
+    if(val){_budgetCache[pid]=val;}
+    if(curBudgetPerson===pid) renderBudget();
+    renderBudgetPersonSelect();
+  });
+});
+function personBudgetTotal(pid){
+  const data=getPersonBudget(pid);
+  return Object.values(data).reduce((a,s)=>a+s.entries.reduce((b,e)=>b+(parseFloat(e.amount)||0),0),0);
+}
+
+function renderBudgetPersonSelect(){
+  const grid=document.getElementById('budget-person-grid');
+  const people_totals=PEOPLE.map(p=>({p,total:personBudgetTotal(p.id)}));
+  const grand=people_totals.reduce((a,x)=>a+x.total,0);
+  grid.innerHTML=PEOPLE.map(p=>{
+    const total=personBudgetTotal(p.id);
+    return `<div class="person-card" onclick="selectBudgetPerson('${p.id}')" style="border-color:${total>0?p.color:'var(--border)'}">
+      <div class="person-avatar">${p.avatar}</div>
+      <div class="person-name">${p.name}</div>
+      <div class="person-sub" style="color:${total>0?p.color:'var(--text3)'};font-weight:${total>0?'700':'400'}">$${total.toFixed(2)} spent</div>
+    </div>`;
+  }).join('');
+  const summaryEl=document.getElementById('budget-group-summary');
+  summaryEl.innerHTML=`<div class="budget-group-summary">
+    <h3>💰 Group Spending Overview</h3>
+    <div class="bgs-grid">
+      ${PEOPLE.map(p=>{
+        const t=personBudgetTotal(p.id);
+        return `<div class="bgs-card"><div class="bgs-name">${p.avatar} ${p.name}</div><div class="bgs-amt" style="color:${p.color}">$${t.toFixed(2)}</div></div>`;
+      }).join('')}
+    </div>
+    <div class="bgs-total-row">
+      <span class="bgs-total-label">Total group spending</span>
+      <span class="bgs-total-amt">$${grand.toFixed(2)}</span>
+    </div>
+  </div>`;
+}
+function selectBudgetPerson(pid){
+  curBudgetPerson=pid;
+  const p=PEOPLE.find(x=>x.id===pid);
+  document.getElementById('budget-person-select').style.display='none';
+  document.getElementById('budget-main').style.display='';
+  document.getElementById('budget-person-title').textContent=p.avatar+' '+p.name+"'s Expenses";
+  renderBudget();
+}
+function renderBudget(){
+  if(!curBudgetPerson)return;
+  const p=PEOPLE.find(x=>x.id===curBudgetPerson);
+  const bdata=getPersonBudget(curBudgetPerson);
+  const total=Object.values(bdata).reduce((a,s)=>a+s.entries.reduce((b,e)=>b+(parseFloat(e.amount)||0),0),0);
+  // person total card
+  document.getElementById('budget-person-total-card').innerHTML=`
+    <div><div class="bpt-label">${p.avatar} ${p.name}'s Total</div><div class="bpt-total">$${total.toFixed(2)}</div></div>
+    <div style="flex:1;padding-left:24px">
+      ${total>0?Object.entries(bdata).map(([k,s])=>{
+        const cat=s.entries.reduce((a,e)=>a+(parseFloat(e.amount)||0),0);
+        if(cat===0)return '';
+        const pct=Math.round((cat/total)*100);
+        return `<div class="budget-bar-label">${s.icon} ${s.label} — $${cat.toFixed(2)} (${pct}%)</div>
+          <div class="budget-bar"><div class="budget-bar-fill" style="width:${pct}%;background:${s.color}"></div></div>`;
+      }).join(''):'<div style="font-size:13px;color:var(--text3);font-style:italic">No expenses yet — add some below!</div>'}
+    </div>`;
+  // stacked category cards
+  document.getElementById('budget-stack').innerHTML=Object.keys(BCAT).map(key=>{
+    const s=bdata[key];
+    const cat=s.entries.reduce((a,e)=>a+(parseFloat(e.amount)||0),0);
+    return `<div class="budget-cat">
+      <div class="bcat-header">
+        <div class="bcat-title">${s.icon} ${s.label}</div>
+        <div class="bcat-total" style="color:${s.color}">$${cat.toFixed(2)}</div>
+      </div>
+      <ul class="bcat-entries">
+        ${s.entries.length===0?'<li style="font-size:12px;color:var(--text3);font-style:italic;padding:4px 0">No entries yet</li>':''}
+        ${s.entries.map((e,i)=>`<li class="be">
+          <span class="be-name">${esc(e.name)}</span>
+          <span class="be-amount">$${parseFloat(e.amount).toFixed(2)}</span>
+          <button class="be-del" onclick="delBudget('${key}',${i})">✕</button>
+        </li>`).join('')}
+      </ul>
+      <div class="bcat-add">
+        <div class="bcat-add-row">
+          <input class="bcat-input" id="bn-${key}" placeholder="Item name (e.g. Lunch at Curry Village)" onkeydown="if(event.key==='Enter')document.getElementById('ba-${key}').focus()">
+        </div>
+        <div class="bcat-add-row">
+          <input class="bcat-input" id="ba-${key}" type="number" step="0.01" min="0" placeholder="Amount in $ (e.g. 24.50)" onkeydown="if(event.key==='Enter')addBudget('${key}')">
+          <button class="bcat-addbtn" onclick="addBudget('${key}')">+ Add</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function addBudget(key){
+  const name=document.getElementById('bn-'+key).value.trim();
+  const amount=parseFloat(document.getElementById('ba-'+key).value);
+  if(!name||isNaN(amount)||amount<=0)return;
+  const bdata=getPersonBudget(curBudgetPerson);
+  bdata[key].entries.push({name,amount});
+  savePersonBudget(curBudgetPerson,bdata);
+  document.getElementById('bn-'+key).value='';document.getElementById('ba-'+key).value='';
+  renderBudget();toast('✅ Expense added!');
+}
+function delBudget(key,idx){
+  const bdata=getPersonBudget(curBudgetPerson);
+  bdata[key].entries.splice(idx,1);
+  savePersonBudget(curBudgetPerson,bdata);renderBudget();
+}
+function updateBudget(){renderBudget();}
+
+
+// ===== CONFETTI =====
+let confettiActive=false;
+function launchConfetti(){
+  if(confettiActive)return;
+  confettiActive=true;
+  const canvas=document.getElementById('confetti-canvas');
+  canvas.style.display='block';
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  const colors=['#d4a843','#2d5a3d','#6a9a72','#b8d4be','#4a8fa8','#c0392b','#f39c12','#8e44ad'];
+  const pieces=[];
+  for(let i=0;i<180;i++){
+    pieces.push({x:Math.random()*canvas.width,y:-20-Math.random()*200,w:8+Math.random()*8,h:5+Math.random()*5,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      speed:2+Math.random()*4,angle:Math.random()*360,spin:Math.random()*6-3,wobble:Math.random()*3});
+  }
+  let frames=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      p.y+=p.speed;p.angle+=p.spin;p.x+=Math.sin(frames*0.02+p.wobble)*0.8;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle*Math.PI/180);
+      ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();
+    });
+    frames++;
+    if(frames<200)requestAnimationFrame(draw);
+    else{ctx.clearRect(0,0,canvas.width,canvas.height);canvas.style.display='none';confettiActive=false;}
+  }
+  draw();
+}
+
+// ===== CHAT =====
+let chatPerson=localStorage.getItem('yose_chat_person')||null;
+let chatMsgs=[];
+
+// Real-time chat listener
+db.ref('chat').on('value', s=>{
+  chatMsgs=s.exists()?Object.entries(s.val()).map(([k,v])=>({...v,_key:k})):[];
+  const wrap=document.getElementById('chat-messages');
+  if(!wrap)return;
+  if(chatMsgs.length===0){
+    wrap.innerHTML='<div class="chat-empty">💬 No messages yet — be the first to post something for the crew!</div>';
+  } else {
+    wrap.innerHTML=chatMsgs.map((m,i)=>{
+      const isMe=m.pid===chatPerson;
+      return `<div class="chat-msg ${isMe?'me':'other'}">
+        <div class="chat-meta">
+          <span class="chat-avatar">${m.avatar}</span>
+          <span>${m.name}</span>
+          <span>${m.date} ${m.time}</span>
+          ${isMe?`<button onclick="delChat('${m._key}')" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:11px;padding:0 3px;">✕</button>`:''}
+        </div>
+        <div class="chat-bubble">${esc(m.text)}</div>
+      </div>`;
+    }).join('');
+    wrap.scrollTop=wrap.scrollHeight;
+  }
+  renderChatPersonBtns();
+});
+
+function renderChatPersonBtns(){
+  const wrap=document.getElementById('chat-person-btns');
+  wrap.innerHTML=PEOPLE.map(p=>`
+    <button class="chat-person-btn${chatPerson===p.id?' active':''}"
+      style="${chatPerson===p.id?'background:'+p.color+';border-color:'+p.color:''}"
+      onclick="setChatPerson('${p.id}')">
+      ${p.avatar} ${p.name}
+    </button>`).join('');
+}
+function setChatPerson(pid){
+  chatPerson=pid;localStorage.setItem('yose_chat_person',pid);renderChatPersonBtns();
+}
+function sendChat(){
+  if(!chatPerson){alert('Please select your name first!');return;}
+  const inp=document.getElementById('chat-input');
+  const msg=inp.value.trim();if(!msg)return;
+  const p=PEOPLE.find(x=>x.id===chatPerson);
+  db.ref('chat').push({pid:chatPerson,name:p.name,avatar:p.avatar,color:p.color,text:msg,
+    time:new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),
+    date:new Date().toLocaleDateString([],{month:'short',day:'numeric'})});
+  inp.value='';
+renderEmergencyContacts();
+}
+function renderChat(){ renderChatPersonBtns(); }
+function delChat(i){chatMsgs.splice(i,1);save('yose_chat_msgs',chatMsgs);renderChat();
+renderEmergencyContacts();}
+
+// ===== POLL =====
+const DEFAULT_POLLS=[
+  {id:'hikes',title:'🥾 Top Hike Pick',sub:'Which trail are you most excited for?',options:['Mist Trail to Vernal Fall','Upper Yosemite Falls','Nevada Fall Loop','Valley Floor by Bike','Half Dome (if permits allow)'],votes:{}},
+  {id:'activity',title:'🎯 Favorite Non-Hike Activity',sub:'What are you most looking forward to besides hiking?',options:['Biking the Valley Floor','Relaxing at Merced River','El Capitan Meadow Hangout','Mariposa Grove Sequoias','Dining at The Ahwahnee'],votes:{}},
+  {id:'dinner',title:'🍽️ Dinner Spot for Night 1',sub:'Where should we eat when we arrive?',options:["Degnan's Kitchen (pizza)","Curry Village Bar & Grill","The Ahwahnee Dining Room","Yosemite Valley Lodge","Cook at the cabin"],votes:{}},
+  {id:'morning',title:'🌅 Best Morning Activity',sub:'What sounds best for an early morning?',options:['Sunrise at Tunnel View','Mirror Lake at dawn','Early hike start (beat the crowds)','Chill breakfast first','Coffee & plan the day'],votes:{}}
+];
+let polls=JSON.parse(JSON.stringify(DEFAULT_POLLS));
+fbListen('polls', val=>{
+  if(val && Array.isArray(val)) polls=val;
+  else if(!val) polls=JSON.parse(JSON.stringify(DEFAULT_POLLS));
+  renderPolls();
+});
+let editingPollIdx=null;
+
+function renderPolls(){
+  const grid=document.getElementById('poll-grid');
+  grid.innerHTML=polls.map((poll,pi)=>{
+    const total=Object.values(poll.votes).reduce((a,v)=>a+v,0);
+    const voted=poll.myVote;
+    return `<div class="poll-card">
+      <div class="poll-card-top">
+        <h4>${esc(poll.title)}</h4>
+        <div class="poll-card-actions">
+          <button class="poll-icon-btn" onclick="openEditPoll(${pi})" title="Edit poll">✏️</button>
+          <button class="poll-icon-btn del" onclick="deletePoll(${pi})" title="Delete poll">🗑️</button>
+        </div>
+      </div>
+      <p class="poll-sub">${esc(poll.sub)} · <strong>${total}</strong> vote${total!==1?'s':''}</p>
+      <div class="poll-options">
+        ${poll.options.map((opt,oi)=>{
+          const count=poll.votes[oi]||0;
+          const pct=total>0?Math.round((count/total)*100):0;
+          const isVoted=voted===oi;
+          return `<div class="poll-opt${isVoted?' voted':''}" onclick="vote(${pi},${oi})">
+            <div class="poll-bar-bg" style="width:${pct}%"></div>
+            <span class="poll-opt-text">${isVoted?'✓ ':''} ${esc(opt)}</span>
+            <span class="poll-count">${count}</span>
+            <span class="poll-pct">${pct}%</span>
+          </div>`;
+        }).join('')}
+      </div>
+      <div class="poll-footer">
+        <button class="poll-reset" onclick="resetPoll(${pi})">🔄 Reset votes</button>
+      </div>
+    </div>`;
+  }).join('') + `<div class="poll-add-card" onclick="openNewPoll()">
+    <div class="poll-add-icon">➕</div>
+    <div class="poll-add-label">Create New Poll</div>
+  </div>`;
+}
+function vote(pi,oi){
+  const p=polls[pi];
+  if(p.myVote===oi){delete p.myVote;p.votes[oi]=Math.max(0,(p.votes[oi]||1)-1);}
+  else{
+    if(p.myVote!==undefined)p.votes[p.myVote]=Math.max(0,(p.votes[p.myVote]||1)-1);
+    p.myVote=oi;p.votes[oi]=(p.votes[oi]||0)+1;
+  }
+  fbSave('polls',polls);renderPolls();
+}
+function resetPoll(pi){polls[pi].votes={};delete polls[pi].myVote;fbSave('polls',polls);renderPolls();}
+function deletePoll(pi){if(confirm('Delete this poll?')){polls.splice(pi,1);fbSave('polls',polls);renderPolls();}}
+
+// Poll modal
+let pmOpts=[];
+function openNewPoll(){
+  editingPollIdx=null;
+  document.getElementById('pm-title').textContent='✨ New Poll';
+  document.getElementById('pm-q').value='';
+  document.getElementById('pm-sub').value='';
+  pmOpts=['',''];
+  renderPmOpts();
+  document.getElementById('poll-modal-bg').classList.add('open');
+}
+function openEditPoll(pi){
+  editingPollIdx=pi;
+  const p=polls[pi];
+  document.getElementById('pm-title').textContent='✏️ Edit Poll';
+  document.getElementById('pm-q').value=p.title;
+  document.getElementById('pm-sub').value=p.sub||'';
+  pmOpts=[...p.options];
+  renderPmOpts();
+  document.getElementById('poll-modal-bg').classList.add('open');
+}
+function renderPmOpts(){
+  document.getElementById('pm-opts-list').innerHTML=pmOpts.map((o,i)=>`
+    <div class="pm-opt-row">
+      <input class="pm-opt-input" value="${escA(o)}" placeholder="Option ${i+1}" oninput="pmOpts[${i}]=this.value">
+      <button class="pm-opt-del" onclick="pmDelOpt(${i})">✕</button>
+    </div>`).join('');
+}
+function pmAddOpt(){pmOpts.push('');renderPmOpts();}
+function pmDelOpt(i){if(pmOpts.length<=2)return;pmOpts.splice(i,1);renderPmOpts();}
+function closePollModal(){document.getElementById('poll-modal-bg').classList.remove('open');}
+function savePollModal(){
+  const title=document.getElementById('pm-q').value.trim();
+  if(!title){alert('Please enter a poll question!');return;}
+  // read current opt inputs
+  document.querySelectorAll('.pm-opt-input').forEach((el,i)=>{pmOpts[i]=el.value.trim();});
+  const opts=pmOpts.filter(o=>o.length>0);
+  if(opts.length<2){alert('Please add at least 2 options!');return;}
+  const sub=document.getElementById('pm-sub').value.trim();
+  if(editingPollIdx!==null){
+    const p=polls[editingPollIdx];
+    p.title=title;p.sub=sub;
+    // remap votes if options changed
+    const newVotes={};
+    p.votes={};delete p.myVote;
+    p.options=opts;
+  } else {
+    polls.push({id:'custom_'+Date.now(),title,sub,options:opts,votes:{}});
+  }
+  fbSave('polls',polls);closePollModal();renderPolls();toast('✅ Poll saved!');
+}
+
+// ===== GALLERY =====
+let gallery=[];
+fbListen('gallery', val=>{
+  gallery=val?Object.values(val):[];
+  renderGallery();
+});
+let highlights=[];
+fbListen('highlights', val=>{
+  highlights=val?Object.values(val):[];
+  renderGallery();
+});
+let galleryPoster=localStorage.getItem('yose_gallery_poster')||null;
+let galleryFilter='all';
+
+function renderGalleryPosterBtns(){
+  const wrap=document.getElementById('gallery-poster-btns');
+  if(!wrap)return;
+  wrap.innerHTML=PEOPLE.map(p=>`
+    <button class="gallery-poster-btn${galleryPoster===p.id?' active':''}"
+      style="${galleryPoster===p.id?'background:'+p.color+';border-color:'+p.color:''}"
+      onclick="setGalleryPoster('${p.id}')">
+      ${p.avatar} ${p.name}
+    </button>`).join('');
+}
+function setGalleryPoster(pid){galleryPoster=pid;localStorage.setItem('yose_gallery_poster',pid);renderGalleryPosterBtns();}
+function setGalleryFilter(f,btn){
+  galleryFilter=f;
+  document.querySelectorAll('.gfbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery();
+}
+function renderGallery(){
+  renderGalleryPosterBtns();
+  const grid=document.getElementById('gallery-grid');
+  let list=gallery;
+  if(galleryFilter!=='all') list=gallery.filter(p=>p.pid===galleryFilter);
+  if(list.length===0){
+    grid.innerHTML=`<div class="gallery-empty" style="grid-column:1/-1"><div class="gallery-empty-icon">📸</div><p>${galleryFilter==='all'?'No photos yet — add some above!':'No photos from this person yet.'}</p></div>`;
+  } else {
+    grid.innerHTML=list.map((p,i)=>{
+      const person=PEOPLE.find(x=>x.id===p.pid);
+      const realIdx=gallery.indexOf(p);
+      return `<div class="gallery-item">
+        <img src="${esc(p.url)}" alt="${esc(p.caption||'Photo')}" onclick="openLightbox('${escA(p.url)}')" onerror="this.parentElement.style.display='none'">
+        <button class="gallery-del" onclick="delPhoto(${realIdx})">✕</button>
+        ${person?`<div class="gallery-poster-tag" style="background:${person.color}88">${person.avatar} ${person.name}</div>`:''}
+        ${p.caption?`<div class="gallery-caption">${esc(p.caption)}</div>`:''}
+      </div>`;
+    }).join('');
+  }
+  // highlights
+  const hl=document.getElementById('highlights-list');
+  if(!hl)return;
+  if(highlights.length===0){hl.innerHTML='<li style="font-size:13px;color:var(--text3);font-style:italic;padding:8px 12px">No highlights yet — add your favorite memories here!</li>';}
+  else{hl.innerHTML=highlights.map((h,i)=>`<li class="highlight-item"><span class="hi-star">⭐</span><span class="hi-text">${esc(h)}</span><button class="hi-del" onclick="delHighlight(${i})">✕</button></li>`).join('');}
+}
+function addPhotoByUrl(){
+  if(!galleryPoster){alert('Pick your name first (at the top)!');return;}
+  const inp=document.getElementById('gallery-url-input');
+  const url=inp.value.trim();if(!url)return;
+  const caption=prompt('Add a caption (optional):','');
+  db.ref('gallery').push({url,caption:caption||'',pid:galleryPoster});
+  inp.value='';toast('📸 Photo added!');
+}
+function uploadPhotos(input){
+  if(!galleryPoster){alert('Pick your name first (at the top)!');input.value='';return;}
+  const files=Array.from(input.files);
+  files.forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=e=>{
+      db.ref('gallery').push({url:e.target.result,caption:file.name.replace(/\.[^/.]+$/,''),pid:galleryPoster});
+      toast('📸 Photo uploaded!');
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value='';
+}
+function delPhoto(i){
+  if(confirm('Remove this photo?')){
+    // get key by index from firebase listener result
+    db.ref('gallery').get().then(s=>{
+      if(!s.exists())return;
+      const keys=Object.keys(s.val());
+      if(keys[i]) db.ref('gallery/'+keys[i]).remove();
+    });
+  }
+}
+function openLightbox(url){const lb=document.getElementById('lightbox');document.getElementById('lightbox-img').src=url;lb.classList.add('open');}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+function addHighlight(){
+  const inp=document.getElementById('hi-input'),val=inp.value.trim();if(!val)return;
+  db.ref('highlights').push(val);inp.value='';toast('⭐ Highlight added!');
+}
+function delHighlight(i){
+  db.ref('highlights').get().then(s=>{
+    if(!s.exists())return;
+    const keys=Object.keys(s.val());
+    if(keys[i]) db.ref('highlights/'+keys[i]).remove();
+  });
+}
+
+// ===== EMERGENCY CONTACTS =====
+let ecData={};
+fbListen('emergencyContacts', val=>{
+  ecData=val||{};
+  renderEmergencyContacts();
+});
+let ecEditingPid=null;
+let ecRows=[];
+function renderEmergencyContacts(){
+  const grid=document.getElementById('ec-grid');
+  if(!grid)return;
+  grid.innerHTML=PEOPLE.map(p=>{
+    const contacts=(ecData[p.id]||[]);
+    return `<div class="ec-card" style="border-top-color:${p.color}">
+      <div class="ec-card-top">
+        <div class="ec-person"><span class="ec-avatar">${p.avatar}</span><span class="ec-name">${p.name}</span></div>
+        <button class="ec-edit-btn" onclick="openEcModal('${p.id}')" title="Edit contacts">✏️</button>
+      </div>
+      <div class="ec-contacts">
+        ${contacts.length===0?`<div class="ec-empty">No contacts added yet — click ✏️ to add</div>`:
+          contacts.map(ec=>`<div class="ec-contact">
+            <div class="ec-contact-rel">${esc(ec.rel||'Contact')}</div>
+            <div class="ec-contact-name">${esc(ec.name)}</div>
+            <div class="ec-contact-phone">${esc(ec.phone)}</div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+function openEcModal(pid){
+  ecEditingPid=pid;
+  const p=PEOPLE.find(x=>x.id===pid);
+  document.getElementById('ec-modal-title').textContent=p.avatar+' '+p.name+"'s Emergency Contacts";
+  ecRows=JSON.parse(JSON.stringify(ecData[pid]||[]));
+  if(ecRows.length===0)ecRows=[{name:'',rel:'',phone:''}];
+  renderEcRows();
+  document.getElementById('ec-modal-bg').classList.add('open');
+}
+function renderEcRows(){
+  document.getElementById('ec-modal-list').innerHTML=ecRows.map((r,i)=>`
+    <div class="ec-row">
+      <button class="ec-row-del" onclick="ecDelRow(${i})">✕</button>
+      <div class="ec-row-inputs">
+        <div>
+          <div class="pm-label">Full Name</div>
+          <input class="pm-opt-input" style="width:100%" placeholder="e.g. Maria Garcia" value="${escA(r.name)}" oninput="ecRows[${i}].name=this.value">
+        </div>
+        <div>
+          <div class="pm-label">Relationship</div>
+          <input class="pm-opt-input" style="width:100%" placeholder="e.g. Mom, Dad, Sister" value="${escA(r.rel)}" oninput="ecRows[${i}].rel=this.value">
+        </div>
+      </div>
+      <div>
+        <div class="pm-label">Phone Number</div>
+        <input class="pm-opt-input" style="width:100%" type="tel" placeholder="e.g. (209) 555-1234" value="${escA(r.phone)}" oninput="ecRows[${i}].phone=this.value">
+      </div>
+    </div>`).join('');
+}
+function ecAddRow(){ecRows.push({name:'',rel:'',phone:''});renderEcRows();}
+function ecDelRow(i){if(ecRows.length<=1){ecRows[0]={name:'',rel:'',phone:''};renderEcRows();return;}ecRows.splice(i,1);renderEcRows();}
+function closeEcModal(){document.getElementById('ec-modal-bg').classList.remove('open');}
+function saveEcModal(){
+  // read current values from DOM
+  document.querySelectorAll('#ec-modal-list .ec-row').forEach((row,i)=>{
+    const inputs=row.querySelectorAll('input');
+    if(ecRows[i]){ecRows[i].name=inputs[0].value.trim();ecRows[i].rel=inputs[1].value.trim();ecRows[i].phone=inputs[2].value.trim();}
+  });
+  ecData[ecEditingPid]=ecRows.filter(r=>r.name||r.phone);
+  fbSave('emergencyContacts',ecData);
+  closeEcModal();renderEmergencyContacts();toast('✅ Contacts saved!');
+}
+
+// ===== TAB SWITCHING =====
+function switchTab(name,el){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(el)el.classList.add('active');
+}
+
+// ===== INIT =====
+// Static renders (no Firebase dependency)
+renderHikes('diff','all');
+// Firebase listeners above handle: itinerary, packing, budget, polls, gallery, chat, emergencyContacts
+renderPackPersonSelect();
+renderBudgetPersonSelect();
+renderChat();
+</script>
+</body>
+</html>
